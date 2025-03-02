@@ -112,10 +112,10 @@ const Footer = () => {
             
             <div className="flex space-x-4">
               {[
-                { icon: FaFacebookF, link: "https://www.facebook.com/profile.php?id=61572284557456", color: "#1877F2" },
+                { icon: FaFacebookF, link: "https://www.facebook.com/profile.php?id=61573448232179", color: "#1877F2" },
                 { icon: FaTwitter, link: "https://x.com/home", color: "#1DA1F2" },
-                { icon: FaInstagram, link: "https://www.instagram.com/codesandmarketing/", color: "#E4405F" },
-                { icon: FaLinkedinIn, link: "#", color: "#0A66C2" },
+                { icon: FaInstagram, link: "https://www.instagram.com/vmktechsolutions/", color: "#E4405F" },
+                { icon: FaLinkedinIn, link: "https://www.linkedin.com/company/vmk-tech-solutions/posts/?feedView=all&viewAsMember=true", color: "#0A66C2" },
                 // { icon: FaYoutube, link: "#", color: "#FF0000" }
               ].map((social, index) => (
                 <motion.a

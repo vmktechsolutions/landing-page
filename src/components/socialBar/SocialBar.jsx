@@ -5,9 +5,11 @@ const SocialBar = () => {
 
   const socialIcons = [
     { icon: FaTwitter, href: "https://twitter.com", color: "hover:text-blue-400" },
-    { icon: FaFacebook, href: "https://facebook.com", color: "hover:text-blue-600" },
-    { icon: FaInstagram, href: "https://instagram.com", color: "hover:text-pink-500" },
-    { icon: FaLinkedin, href: "https://linkedin.com", color: "hover:text-blue-500" },
+    { icon: FaFacebook, href: "https://www.facebook.com/profile.php?id=61573448232179", color: "hover:text-blue-600" },
+    { icon: FaInstagram, href: "https://www.instagram.com/vmktechsolutions/", 
+      color: "hover:text-pink-500" },
+    { icon: FaLinkedin, href: "https://www.linkedin.com/company/vmk-tech-solutions/?viewAsMember=true", 
+      color: "hover:text-blue-500" },
     { icon: FaGithub, href: "https://github.com", color: "hover:text-gray-800" }
   ];
 
