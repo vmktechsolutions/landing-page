@@ -85,7 +85,7 @@ const ServicesSection = () => {
             className="bg-white rounded-lg shadow-md border border-gray-100 flex flex-col items-center p-6 relative overflow-hidden group"
           >
             {/* Half-height hover background effect */}
-            <div className={` absolute bottom-0 left-0 w-full h-[80%] ${service.color} rounded-t-xl transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0`}></div>
+            <div className={`absolute bottom-0 left-0 w-full h-[80%] ${service.color} rounded-t-xl transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0`}></div>
 
             {/* Content (above the background) */}
             <div className="flex flex-col items-center w-full h-full z-10 relative">

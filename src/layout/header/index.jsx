@@ -1,7 +1,7 @@
 
 
 import { useState, useEffect } from "react";
-import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { BiSolidPhoneCall } from "react-icons/bi";
 import { BiMenu, BiX } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import logo from "../../../public/logo.png";
@@ -22,11 +22,10 @@ const Header = () => {
 
   return (
     <header
-    className={`fixed top-0 left-0 w-full transition-all z-50 ${
-        scrolled ? "bg-white shadow-lg" : "bg-transparent"
-    }`}
->
-    <div  className={`mx-auto flex items-center justify-between px-6 sm:w-[80%] w-full py-3 rounded-2xl ${ scrolled ? "shadow-none " : "shadow-xl bg-white mt-3" }`}>
+      className={`fixed top-0 left-0 w-full transition-all z-50 ${scrolled ? "bg-white shadow-lg" : "bg-transparent"
+        }`}
+    >
+      <div className={`mx-auto flex items-center justify-between px-6 sm:w-[80%] w-full py-3 rounded-2xl ${scrolled ? "shadow-none " : "shadow-xl bg-white mt-3"}`}>
         <Link to="/" className="flex items-center text-2xl font-bold uppercase">
           <img src={logo} className="h-20 transition-all duration-300 ${scrolled ? 'h-10' : 'h-12' }" alt="Logo" />
         </Link>
@@ -50,7 +49,8 @@ const Header = () => {
             ].map((item, index) => (
               <li key={index} className="relative">
                 <Link to={item.path}
-                  className="text-gray-700 hover:text-green-500 block py-2 transition-all duration-100 group">
+                  onClick={toggleMobileNav}
+                  className="text-gray-700 hover:text-green-500 block py-2 transition-all duration-100 group border-b border-black sm:border-b-0 focus:bg-slate-500">
                   <span className="relative inline-block hover:scale-94 transition-transform duration-200 group-hover:translate-y-1">
                     {item.name}
                   </span>
@@ -62,11 +62,13 @@ const Header = () => {
 
         {/* Social & Mobile Toggle */}
         <div className="flex space-x-4 items-center">
-          {[FaTwitter, FaFacebook, FaInstagram, FaLinkedin].map((Icon, index) => (
-            <Link to={"/"} key={index} className="text-gray-700 hover:text-green-500 transition-transform transform hover:scale-110">
-              <Icon size={20} />
-            </Link>
-          ))}
+          <h1 className="text-gray-700 flex items-center space-x-3 hover:text-green-500 transition-transform transform hover:scale-110">
+            <BiSolidPhoneCall
+              className="w-6 h-6" />
+            <span className="font-bold text-slate-800 text-lg sm:text-xl">
+              +91 95571 10400
+            </span>
+          </h1>
           <button onClick={toggleMobileNav} className="md:hidden text-gray-700 text-2xl">
             {mobileNavActive ? <BiX /> : <BiMenu />}
           </button>

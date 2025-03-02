@@ -12,7 +12,7 @@ const SocialBar = () => {
   ];
 
   return (
-    <div className="fixed left-3 top-1/2 transform -translate-y-1/2 z-50 flex flex-col space-y-5">
+    <div className="fixed left-3 top-1/2 transform -translate-y-1/2 z-50 flex flex-col space-y-5 hidden md:flex">
       <div className="flex flex-col items-center space-y-5 bg-white py-4 px-3 rounded-full shadow-lg">
         {socialIcons.map((social, index) => (
           <a

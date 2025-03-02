@@ -67,7 +67,7 @@ const ContactUs = () => {
     <div className="p-4 sm:p-4 md:p-8 lg:p-20 xl:p-[150px] mt-16 md:mt-0">
       <div className="bg-white p-10 rounded-2xl shadow-lg mx-auto flex flex-col md:flex-row items-center gap-10">
         <div className="flex-1 text-center md:text-left">
-          <h2 className="text-xl text-green-500 italic">Lets stay in touch</h2>
+          <h2 className="text-xl text-green-500 italic mt-8 sm:mt-0">Lets stay in touch</h2>
           <h1 className="text-3xl font-bold text-gray-800 mt-2 w-full">
             Ready to bring your website and app <br /> ideas to life?
           </h1>
@@ -169,7 +169,7 @@ const ContactUs = () => {
 
                   <button
                     type="submit"
-                    className="mt-4 py-3 px-6 bg-greenColor text-customBodyColor rounded-lg shadow-lg hover:shadow-xl focus:ring-4 focus:ring-green-300"
+                    className="mt-4 py-3 px-6 bg-green-700 text-white rounded-lg shadow-lg hover:shadow-xl focus:ring-4 focus:ring-green-300"
                   >
                     Submit Now
                   </button>
