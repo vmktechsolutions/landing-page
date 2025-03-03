@@ -4,13 +4,11 @@ import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin, FaGithub } from "react-
 const SocialBar = () => {
 
   const socialIcons = [
-    { icon: FaTwitter, href: "https://twitter.com", color: "hover:text-blue-400" },
-    { icon: FaFacebook, href: "https://www.facebook.com/profile.php?id=61573448232179", color: "hover:text-blue-600" },
-    { icon: FaInstagram, href: "https://www.instagram.com/vmktechsolutions/", 
-      color: "hover:text-pink-500" },
-    { icon: FaLinkedin, href: "https://www.linkedin.com/company/vmk-tech-solutions/?viewAsMember=true", 
-      color: "hover:text-blue-500" },
-    { icon: FaGithub, href: "https://github.com", color: "hover:text-gray-800" }
+    // { icon: FaTwitter, href: "https://twitter.com", color: "text-blue-400" },
+    { icon: <FaFacebook className="text-blue-600"/>, href: "https://www.facebook.com/profile.php?id=61573448232179"},
+    { icon: <FaInstagram className="text-pink-600"/> , href: "https://www.instagram.com/vmktechsolutions/" },
+    { icon: <FaLinkedin className="text-blue-500"/> , href: "https://www.linkedin.com/company/vmk-tech-solutions/?viewAsMember=true" },
+    // { icon: FaGithub, href: "https://github.com", color: "hover:text-gray-800" }
   ];
 
   return (
