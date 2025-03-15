@@ -10,13 +10,13 @@ import Achievement from './achievement';
 const WebDevelopement = () => {
   return (
     <>
-<Hero/>
-<ProductFeature/>
-<Achievement/>
-<BusinessSolutions/>
-<Descriptions/>
-<TechStack/>
-<ContactUs/>
+      <Hero />
+      <ProductFeature />
+      <Achievement />
+      <BusinessSolutions />
+      <Descriptions />
+      <TechStack />
+      <ContactUs />
     </>
   )
 }

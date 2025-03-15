@@ -43,10 +43,10 @@ const Languages = () => {
 
   return (
     <div className="relative bg-gradient-to-r from-blue-200 to-slate-600">
-      <section class="text-gray-600 body-font">
-        <div class="container px-5 py-24 mx-auto">
+      <section className="text-gray-600 body-font">
+        <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4 text-center">
-            {stats.map((item) => (
+            {stats?.map((item) => (
               <div key={item.id}  className="p-4 sm:w-1/4 w-1/2">
                 <Counter target={item.value} />
                 <p className="leading-relaxed text-slate-700 font-semibold">{item.label}</p>

@@ -11,6 +11,7 @@ import Development from '../development/index';
 import Faq from '../../components/AskQuestion/Faq';
 import Testimonial from '../testimonial/index';
 import SocialBar from '../../components/socialBar/SocialBar';
+import ProcessFlow from '../../components/Process/Page';
 
 const Home = () => {
 
@@ -20,6 +21,7 @@ const Home = () => {
             <Hero />
             <WebServices />
             {/* <Services2 /> */}
+            <ProcessFlow />
             <Development />
             <Information />
             <Languages />

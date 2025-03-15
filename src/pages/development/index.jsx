@@ -1,78 +1,118 @@
 import React from 'react';
-import img1 from '../../assets/Banner/Sdlc.png';
-import PageTitle from '../../components/Pagetitle/PageTitle';
-import { GrUserExpert } from "react-icons/gr";
-import { FaUserTie } from "react-icons/fa6";
-import { BsGraphUpArrow } from "react-icons/bs";
-import { GrHostMaintenance } from "react-icons/gr";
+import { FaFlag, FaChartLine, FaHeadset, FaUserFriends } from 'react-icons/fa';
+import PageTitle from "../../components/Pagetitle/PageTitle";
+import Icon from "../../../public/bus.png";
 
-const Development = () => {
-
-  const styIcon = "text-4xl text-slate-500";
-
-  const data = [
+const WhyChooseUs = () => {
+  const features = [
     {
       id: 1,
-      icon: <GrUserExpert className={styIcon} />,
-      title: "Expert Team",
-      description: "VMK Tech solutions has a team of experienced developers and designers who have a deep understanding of the latest technologies and trends in the industry.",
+      icon: <FaFlag className="w-8 h-8 text-blue-500" />,
+      title: "Years of Expertise",
+      description: "We are dedicated professionals with years of experience in IT management and web development services. Rest assured of our excellence and achieve complete satisfaction."
     },
     {
       id: 2,
-      icon: <FaUserTie className={styIcon} />,
-      title: "Professional Advisors",
-      description: "VMK Tech solutions has a team of experienced developers and designers who have a deep understanding of the latest technologies and trends in the industry.",
+      icon: <FaChartLine className="w-8 h-8 text-red-500" />,
+      title: "Credible services",
+      description: "Why shell out cash for print and digital advertisements? Prefer IT solutions and web development with us. We ensure long-lasting effects."
     },
     {
       id: 3,
-      icon: <BsGraphUpArrow className={styIcon} />,
-      title: "Quality Assurance",
-      description: "VMK Tech solutions has a team of experienced developers and designers who have a deep understanding of the latest technologies and trends in the industry.",
+      icon: <FaUserFriends className="w-8 h-8 text-green-500" />,
+      title: "Enhanced User Experience",
+      description: "Websites designed and maintained by our professionals at the leading IT solution company are easy to navigate. Thus you can ensure a user-friendly platform for your target audience."
     },
     {
       id: 4,
-      icon: <GrHostMaintenance className={styIcon} />,
-      title: "24/7 Support",
-      description: "VMK Tech solutions has a team of experienced developers and designers who have a deep understanding of the latest technologies and trends in the industry.",
+      icon: <FaHeadset className="w-8 h-8 text-purple-500" />,
+      title: "Complete Support and Maintenance",
+      description: "Our services are not limited to designing websites. Rather we provide support and maintenance with our IT and web development services."
     }
-  ]
+  ];
 
   return (
-    <section className="text-gray-600 body-font">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-          <div className="inline-block text-slate-500 px-4 py-1 mb-4 text-xl sm:text-3xl font-bold uppercase tracking-wider">
-            Why...?
-          </div>
-          <PageTitle title="Why choose VMK Tech solutions For Best IT Services in India" />
-          <p className="lg:w-1/2 w-full leading-relaxed text-gray-500">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table.</p>
+    <div className="w-full h-full py-16 bg-gray-50">
+      <div className="container mx-auto px-4">
+        {/* Heading */}
+        <div className='flex flex-col justify-center items-center'>
+        <PageTitle title="Best IT Services in India" />
         </div>
-        <div className="flex flex-wrap -m-4">
-          {data.map((item) => (
-            <div
-              key={item.id}
-              className="xl:w-1/4 md:w-1/2 p-4 transition-transform duration-300 ease-in-out transform hover:scale-105 "
-            >
-              <div
-              
-                className="border border-gray-200 p-6 rounded-lg space-y-4 shadow-md hover:shadow-lg hover:bg-slate-100"
-              >
-                <div className="h-full inline-flex items-center justify-center rounded-full bg-indigo-100 p-5">
-                  {item.icon}
+        
+        {/* Intro text */}
+        <p className="text-center max-w-4xl mx-auto mb-12 text-gray-700">
+          At VMK Tech solutions, we offer best IT solutions, we are professionals to handle A to Z of your organization's IT services needs. We can help you to focus on the latest market trends as well as boost your online presence.
+        </p>
+        
+        <div className="flex flex-wrap items-stretch justify-center">
+          {/* Features grid - will display as single column on mobile, 2x2 grid on larger screens */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {/* Left column features (mobile: full width, desktop: left side) */}
+            <div className="space-y-6 md:space-y-8 col-span-1">
+              {features.slice(0, 2).map((feature) => (
+                <div 
+                  key={feature.id}
+                  className="bg-white cursor-pointer rounded-xl shadow-lg p-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl h-[200px] border-2 hover:border-slate-400"
+                >
+                  <div className="flex items-start">
+                    <div className="mr-4 mt-1 flex-shrink-0">
+                      {feature.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-md font-semibold mb-2 text-gray-800">{feature.title}</h3>
+                      <p className="text-gray-600 text-sm">{feature.description}</p>
+                    </div>
+                  </div>
                 </div>
-                <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
-                  {item.title}
-                </h2>
-                <hr className="border-2 border-t-slate-500" />
-                <p className="leading-relaxed text-base">{item.description}</p>
+              ))}
+            </div>
+
+            {/* Center image (hidden on small screens, visible on lg and above) */}
+            <div className="hidden lg:flex items-center justify-center">
+              <div className="w-48 h-48 md:w-64 md:h-64 bg-red-500 rounded-full relative shadow-xl flex items-center justify-center">
+                <img 
+                  src={Icon}
+                  alt="IT Professional" 
+                  className="absolute bottom-0 h-64 md:h-64 object-cover object-center"
+                />
               </div>
             </div>
-          ))}
+
+            {/* Center image for medium screens (hidden on small and large screens) */}
+            <div className="md:col-span-2 lg:hidden flex justify-center py-6">
+              <div className="w-48 h-48 bg-red-500 rounded-full relative shadow-xl flex items-center justify-center">
+                <img 
+                  src={Icon}
+                  alt="IT Professional" 
+                  className="absolute bottom-0 h-64 object-cover object-center"
+                />
+              </div>
+            </div>
+            
+            {/* Right column features (mobile: full width, desktop: right side) */}
+            <div className="space-y-6 md:space-y-8 col-span-1">
+              {features.slice(2, 4).map((feature) => (
+                <div 
+                  key={feature.id}
+                 className="bg-white cursor-pointer rounded-xl shadow-lg p-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl h-[200px] border-2 hover:border-slate-400"
+                >
+                  <div className="flex items-start">
+                    <div className="mr-4 mt-1 flex-shrink-0">
+                      {feature.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-md font-semibold mb-2 text-gray-800">{feature.title}</h3>
+                      <p className="text-gray-600 text-sm">{feature.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-
       </div>
-    </section>
-  )
-}
+    </div>
+  );
+};
 
-export default Development
+export default WhyChooseUs;

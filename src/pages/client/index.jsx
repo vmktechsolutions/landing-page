@@ -21,7 +21,7 @@ import PageTitle from '../../components/Pagetitle/PageTitle';
 const clientData = [
   {
     id: 1,
-    name: "Aman Viswakarma",
+    name: "Amit Singh",
     role: "Full-stack Developer",
     industry: "Web Services",
     image: img1,
@@ -34,7 +34,7 @@ const clientData = [
   },
   {
     id: 2,
-    name: "Chandan Prajapati",
+    name: "Sumit Singh",
     role: "Full-stack Developer",
     industry: "Web Services and App services",
     image: img1,
@@ -47,7 +47,7 @@ const clientData = [
   },
   {
     id: 3,
-    name: "Karuna Bhardhwaj",
+    name: "Naina tripathi",
     role: "CEO, VMK Tech Solutions",
     industry: "Web Services and Digital Marketing",
     image: img1,
@@ -60,7 +60,7 @@ const clientData = [
   },
   {
     id: 4,
-    name: "Kamlendra Tripathi",
+    name: "Prikshat Tripathi",
     role: "Full-stack Developer",
     industry: "Web Services",
     image: img1,
