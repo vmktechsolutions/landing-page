@@ -215,7 +215,7 @@ const Footer = () => {
                 whileHover={{ x: 5 }}
               >
                 <FaPhoneAlt className="text-custom-gradient" />
-                <p className={linkss}>+91 95571 10400</p>
+                <p className={linkss}>+91 90279 38882</p>
                 {/* <p className="text-gray-400">+91-6393377862</p> */}
               </motion.div>
               <motion.div
@@ -223,7 +223,7 @@ const Footer = () => {
                 whileHover={{ x: 5 }}
               >
                 <FaEnvelope className="text-custom-gradient" />
-                <p className={linkss}>karuna@vmktechsolutions.com</p>
+                <p className={linkss}>info@vmktechsolutions.com</p>
               </motion.div>
 
               {/* Newsletter Subscription */}

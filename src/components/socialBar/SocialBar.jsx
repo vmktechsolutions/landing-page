@@ -1,11 +1,13 @@
 import React from "react";
-import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import {  FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { RiTwitterXFill } from "react-icons/ri";
 
 const SocialBar = () => {
   const socialIcons = [
     { icon: FaFacebook, href: "https://www.facebook.com/profile.php?id=61573448232179", color: "text-blue-600" },
     { icon: FaInstagram, href: "https://www.instagram.com/vmktechsolutions/", color: "text-pink-600" },
-    { icon: FaLinkedin, href: "https://www.linkedin.com/company/vmk-tech-solutions/?viewAsMember=true", color: "text-blue-500" }
+    { icon: FaLinkedin, href: "https://www.linkedin.com/company/vmk-tech-solutions/?viewAsMember=true", color: "text-blue-500" },
+    { icon: RiTwitterXFill, href: "https://twitter.com/VMKTechSolutions", color: "text-blue-500" }
   ];
 
   return (

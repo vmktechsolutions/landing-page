@@ -82,7 +82,7 @@ const ContactUs = () => {
               <div className="text-gray-700">
                 <p>For urgent help</p>
                 <div className="flex">
-                  <span className="font-semibold text-gray-900 mr-2">+91 95571 10400</span>
+                  <span className="font-semibold text-gray-900 mr-2">+91 90279 38882</span>
                   {/* <span className="font-semibold text-gray-900">+91-6393377862</span> */}
                 </div>
               </div>
@@ -94,7 +94,7 @@ const ContactUs = () => {
               <p className="text-gray-700">
                 Mail us 24/7 <br />
                 <span className="font-semibold text-gray-900">
-                karuna@vmktechsolutions.com
+                info@vmktechsolutions.com
                 </span>
               </p>
             </div>

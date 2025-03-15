@@ -31,7 +31,7 @@ const Header = () => {
         </Link>
 
         {/* Mobile Navigation Overlay */}
-        <div className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity ${mobileNavActive ? "opacity-100 visible" : "opacity-0 invisible"}`} onClick={toggleMobileNav}></div>
+        <div className={`fixed inset-0 ${mobileNavActive ? "opacity-100 visible" : "opacity-0 invisible"}`} onClick={toggleMobileNav}></div>
 
         <nav className={`fixed top-0 left-0 h-full sm:w-64 w-full bg-white shadow-xl transform ${mobileNavActive ? "translate-x-0" : "-translate-x-full"} transition-transform md:relative md:flex md:w-auto md:translate-x-0 md:shadow-none z-50`}>
           <button onClick={toggleMobileNav} className="absolute top-5 right-5 text-2xl text-gray-700 md:hidden">
@@ -50,7 +50,7 @@ const Header = () => {
               <li key={index} className="relative">
                 <Link to={item.path}
                   onClick={toggleMobileNav}
-                  className="text-gray-700 hover:text-green-500 block py-2 transition-all duration-100 group border-b border-black sm:border-b-0 focus:bg-slate-500">
+                  className="text-gray-700 hover:text-green-500 block py-2 transition-all duration-100 group border-b border-black sm:border-b-0">
                   <span className="relative inline-block hover:scale-94 transition-transform duration-200 group-hover:translate-y-1">
                     {item.name}
                   </span>
@@ -66,7 +66,7 @@ const Header = () => {
             <BiSolidPhoneCall
               className="w-6 h-6" />
             <span className="font-bold text-slate-800 text-lg sm:text-xl">
-              +91 95571 10400
+            +91 90279 38882
             </span>
           </h1>
           <button onClick={toggleMobileNav} className="md:hidden text-gray-700 text-2xl">
