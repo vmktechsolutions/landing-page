@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { createContext, useReducer } from 'react';
+import { createContext, useReducer } from 'react';
 import * as actionType from '../store/actions';
 import { CONFIG } from '../config/constant';
 

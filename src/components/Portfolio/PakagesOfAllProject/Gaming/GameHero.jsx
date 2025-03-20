@@ -101,13 +101,19 @@
 
 // export default GameHero;
 
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import banner1 from "../../../../assets/Banner/ebc40a525684279646afa0080a0f10b8.mp4";
 import banner2 from "../../../../assets/HeroSection/ebc40a525684279646afa0080a0f10b8.gif";
 
 const GameHero = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000, once: true
+    });
+  })
   const [isSafari, setIsSafari] = useState(false);
 
   useEffect(() => {
@@ -163,10 +169,8 @@ const GameHero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-center min-h-[calc(100vh-200px)]">
           <div className="w-full lg:w-2/3 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+            <div
+              data-aos="fade-up" data-aos-duration="800"
             >
               <h1 className="text-5xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white max-w-6xl">
                 Leading Game Development Company
@@ -175,11 +179,9 @@ const GameHero = () => {
                 Transform your online presence with data-driven SEO strategies
                 that deliver measurable results
               </p>
-              <motion.div
-                className="flex justify-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
+              <div
+                className="flex justify-center" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800"
+
               >
                 <Link
                   to="/contact"
@@ -187,31 +189,30 @@ const GameHero = () => {
                 >
                   Get Started
                 </Link>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Floating Elements */}
-            <motion.div
-              className="absolute top-1/4 left-10 bg-white/10 backdrop-blur-sm p-4 rounded-xl hidden lg:block"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
+            <div
+              className="absolute top-1/4 left-10 floating-animation bg-white/10 backdrop-blur-sm p-4 rounded-xl hidden lg:block" data-aos="fade-up"
+              style={'.floating-animation{ animation: floatUpDown 2s infinite ease-in-out;} @keyframes floatUpDown{0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); }}'}
             >
               <div className="h-2 w-16 bg-green-400 rounded-full"></div>
               <div className="h-2 w-12 bg-yellow-400 rounded-full mt-2"></div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="absolute bottom-1/4 right-10 bg-white/10 backdrop-blur-sm p-4 rounded-xl hidden lg:block"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+            <div
+              className="absolute bottom-1/4 right-10 bg-white/10 floating-down-animation backdrop-blur-sm p-4 rounded-xl hidden lg:block" data-aos="fade-up"
+              style={'.floating-down-animation{ animation: floatDownUp 2s infinite ease-in-out 0.5s;} @keyframes floatDownUp{0% { transform: translateY(0); } 50% { transform: translateY(10px); } 100% { transform: translateY(0); }}'}
+
             >
               <div className="h-2 w-12 bg-yellow-400 rounded-full"></div>
               <div className="h-2 w-16 bg-green-400 rounded-full mt-2"></div>
-            </motion.div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

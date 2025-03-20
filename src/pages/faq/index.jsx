@@ -1,5 +1,13 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css'
+
+
+useEffect(() => {
+  Aos.init({
+    duration: 1000, once: true
+  });
+}, []);
 
 const faqData = [
   {
@@ -26,11 +34,8 @@ const faqData = [
 
 const FaqItem = ({ question, answer, isOpen, onClick, index }) => {
   return (
-    <motion.div 
-      className="mb-4 "
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
+    <div
+      className="mb-4 " data-aos="fade-up"
     >
       <button
         onClick={onClick}
@@ -40,62 +45,48 @@ const FaqItem = ({ question, answer, isOpen, onClick, index }) => {
           <h3 className="font-semibold text-base md:text-lg text-gray-800 pr-8">
             {question}
           </h3>
-          <motion.div
-            animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={{ duration: 0.3, type: "tween" }}
-            className="text-blue-600 absolute right-5 top-1/2 -translate-y-1/2"
+          <div
+            className="text-blue-600 absolute right-5 top-1/2 -translate-y-1/2" data-aos="fade-up"
           >
-            <svg 
-              className="w-5 h-5" 
-              fill="none" 
-              stroke="currentColor" 
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M19 9l-7 7-7-7" 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
               />
             </svg>
-          </motion.div>
+          </div>
         </div>
       </button>
-      
-      <AnimatePresence>
+
         {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
+          <div
+            className="overflow-hidden" data-aos="fade-up"
           >
             <div className="p-5 bg-gray-50 rounded-lg mt-2">
               <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                 {answer}
               </p>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
-    </motion.div>
+    </div>
   );
 };
 
 const FaqIllustration = () => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.8 }}
-    className="relative w-[500px] h-[500px] mx-auto"
+  <div
+    className="relative w-[500px] h-[500px] mx-auto" data-aos="fade-up"
   >
     {/* Neural Network Background */}
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className="absolute inset-0"
+    <div
+      className="absolute inset-0" data-aos="fade-up"
     >
       <svg className="w-full h-full" viewBox="0 0 100 100">
         <defs>
@@ -114,19 +105,13 @@ const FaqIllustration = () => (
         <rect width="100" height="100" fill="url(#neuralGrid)" />
         <circle cx="50" cy="50" r="45" fill="url(#glowGradient)" />
       </svg>
-    </motion.div>
+    </div>
 
     {/* Quantum Rings */}
     {[...Array(4)].map((_, i) => (
-      <motion.div
+      <div
         key={i}
-        className="absolute inset-0"
-        animate={{ rotate: 360 }}
-        transition={{
-          duration: 40 - i * 5,
-          repeat: Infinity,
-          ease: "linear",
-        }}
+        className="absolute inset-0" data-aos="fade-up"
       >
         <svg className="w-full h-full" viewBox="0 0 100 100">
           <defs>
@@ -146,15 +131,12 @@ const FaqIllustration = () => (
             strokeDasharray={`${1 + i} ${3 + i}`}
           />
         </svg>
-      </motion.div>
+      </div>
     ))}
 
     {/* Digital Circuits */}
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1, delay: 0.5 }}
-      className="absolute inset-0"
+    <div
+      className="absolute inset-0" data-aos="fade-up"
     >
       <svg className="w-full h-full" viewBox="0 0 100 100">
         <defs>
@@ -166,55 +148,35 @@ const FaqIllustration = () => (
             </feMerge>
           </filter>
         </defs>
-        <motion.g filter="url(#neonGlow)">
+        <g filter="url(#neonGlow)">
           {[...Array(8)].map((_, i) => (
-            <motion.path
+            <path
               key={i}
               d={`M${50 + 30 * Math.cos(i * Math.PI / 4)} ${50 + 30 * Math.sin(i * Math.PI / 4)} L${50} 50`}
               stroke={i % 2 ? "#3B82F6" : "#8B5CF6"}
               strokeWidth="0.3"
               strokeDasharray="1 2"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ 
-                pathLength: 1, 
-                opacity: [0, 1, 0],
-                strokeWidth: ["0.2", "0.4", "0.2"]
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                delay: i * 0.2,
-                ease: "linear"
-              }}
             />
           ))}
-        </motion.g>
+        </g>
       </svg>
-    </motion.div>
+    </div>
 
     {/* Holographic Question Mark */}
-    <motion.div className="absolute inset-0 flex items-center justify-center">
-      <motion.div
-        animate={{
-          scale: [1, 1.05, 1],
-          opacity: [0.8, 1, 0.8],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="relative w-48 h-48"
+    <div className="absolute inset-0 flex items-center justify-center" data-aos="fade-up">
+      <div
+        
+        className="relative w-48 h-48" data-aos="fade-up"
       >
         <svg className="w-full h-full" viewBox="0 0 100 100">
           <defs>
             <filter id="holoGlow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-              <feFlood floodColor="#3B82F6" result="glowColor"/>
-              <feComposite in="glowColor" in2="coloredBlur" operator="in" result="softGlow"/>
+              <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+              <feFlood floodColor="#3B82F6" result="glowColor" />
+              <feComposite in="glowColor" in2="coloredBlur" operator="in" result="softGlow" />
               <feMerge>
-                <feMergeNode in="softGlow"/>
-                <feMergeNode in="SourceGraphic"/>
+                <feMergeNode in="softGlow" />
+                <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
             <linearGradient id="holoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -229,17 +191,14 @@ const FaqIllustration = () => (
               </stop>
             </linearGradient>
             <filter id="neonFlare">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
-              <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="neon"/>
-              <feComposite in="SourceGraphic" in2="neon" operator="over"/>
+              <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+              <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="neon" />
+              <feComposite in="SourceGraphic" in2="neon" operator="over" />
             </filter>
           </defs>
-          
+
           {/* Main Question Mark */}
-          <motion.path
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2, ease: "easeInOut" }}
+          <path
             d="M50 20C65 20 70 30 70 40C70 50 60 55 50 55L50 65"
             stroke="url(#holoGradient)"
             strokeWidth="4"
@@ -249,15 +208,7 @@ const FaqIllustration = () => (
           />
 
           {/* Outer Glow Effect */}
-          <motion.path
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: [0, 0.5, 0] }}
-            transition={{ 
-              duration: 2,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeInOut"
-            }}
+          <path
             d="M50 20C65 20 70 30 70 40C70 50 60 55 50 55L50 65"
             stroke="url(#holoGradient)"
             strokeWidth="8"
@@ -269,19 +220,8 @@ const FaqIllustration = () => (
 
           {/* Energy Dots */}
           {[...Array(5)].map((_, i) => (
-            <motion.circle
+            <circle
               key={i}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ 
-                scale: [0, 1, 0],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: i * 0.4,
-                ease: "easeInOut"
-              }}
               cx={50 + Math.cos(i * Math.PI / 2.5) * 25}
               cy={40 + Math.sin(i * Math.PI / 2.5) * 25}
               r="2"
@@ -291,28 +231,16 @@ const FaqIllustration = () => (
           ))}
 
           {/* Main Dot with Pulse */}
-          <motion.circle
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5, delay: 2 }}
+          <circle
             cx="50"
             cy="80"
             r="3"
             fill="url(#holoGradient)"
             filter="url(#holoGlow)"
           />
-          
+
           {/* Pulsing Ring around Dot */}
-          <motion.circle
-            animate={{ 
-              scale: [1, 1.5, 1],
-              opacity: [0.5, 0, 0.5]
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
+          <circle
             cx="50"
             cy="80"
             r="3"
@@ -324,17 +252,8 @@ const FaqIllustration = () => (
 
           {/* Tech Lines */}
           {[...Array(3)].map((_, i) => (
-            <motion.line
+            <line
               key={i}
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{
-                duration: 1.5,
-                delay: i * 0.3,
-                repeat: Infinity,
-                repeatType: "loop",
-                ease: "linear"
-              }}
               x1={45 + i * 5}
               y1="85"
               x2={45 + i * 5}
@@ -349,71 +268,39 @@ const FaqIllustration = () => (
 
         {/* Hologram Scan Lines */}
         {[...Array(3)].map((_, i) => (
-          <motion.div
+          <div
             key={i}
-            animate={{
-              top: ["0%", "100%", "0%"],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "linear",
-              delay: i * 1
-            }}
-            className="absolute left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"
-            style={{ opacity: 0.3 - i * 0.1 }}
+            className="absolute left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" data-aos="fade-up"
           />
         ))}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
 
     {/* Quantum Particles */}
     {[...Array(30)].map((_, i) => (
-      <motion.div
+      <div
         key={i}
         className="absolute"
         style={{
           left: `${Math.random() * 100}%`,
           top: `${Math.random() * 100}%`,
         }}
-        animate={{
-          y: [0, -15 * Math.random(), 0],
-          x: [0, 15 * Math.random() - 7.5, 0],
-          opacity: [0, 0.8, 0],
-          scale: [0.3, 1, 0.3],
-        }}
-        transition={{
-          duration: 2 + Math.random() * 2,
-          repeat: Infinity,
-          delay: Math.random() * 2,
-        }}
       >
         <div className={`w-1 h-1 rounded-full ${i % 2 ? 'bg-gradient-to-r from-blue-400 to-purple-400' : 'bg-gradient-to-r from-purple-400 to-blue-400'}`} />
-      </motion.div>
+      </div>
     ))}
 
     {/* Energy Fields */}
     {[...Array(4)].map((_, i) => (
-      <motion.div
+      <div
         key={i}
-        className="absolute inset-0"
-        animate={{
-          scale: [1, 1.5, 1],
-          opacity: [0.2, 0, 0.2],
-          rotate: [0, 90, 0],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          delay: i * 1,
-          ease: "easeInOut",
-        }}
+        className="absolute inset-0" data-aos="fade-up"
       >
-        <div className="w-full h-full rounded-full border border-blue-400/10" 
-             style={{ borderWidth: `${0.5 + i * 0.5}px` }} />
-      </motion.div>
+        <div className="w-full h-full rounded-full border border-blue-400/10"
+          style={{ borderWidth: `${0.5 + i * 0.5}px` }} />
+      </div>
     ))}
-  </motion.div>
+  </div>
 );
 
 const Faq = () => {
@@ -423,30 +310,21 @@ const Faq = () => {
     <div className="relative py-16 md:py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="relative inline-block"
+          <div
+            className="relative inline-block" data-aos="fade-up"
           >
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="block text-blue-600 text-sm md:text-base font-semibold mb-2"
+            <span
+              className="block text-blue-600 text-sm md:text-base font-semibold mb-2" data-aos="fade-up"
             >
               HAVE QUESTIONS?
-            </motion.span>
-            <h2 className="text-2xl md:text-4xl font-bold mb-4 text-gray-900">
+            </span>
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 text-gray-900" data-aos="fade-up">
               Frequently Asked Questions
             </h2>
-            <motion.div 
-              initial={{ width: 0 }}
-              animate={{ width: "100%" }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 mx-auto rounded-full"
+            <div 
+              className="h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 mx-auto rounded-full" data-aos="fade-up"
             />
-          </motion.div>
+          </div>
         </div>
 
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 max-w-7xl mx-auto">

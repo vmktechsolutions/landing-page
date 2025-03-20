@@ -1,8 +1,13 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect } from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 import { FaMobileAlt, FaDatabase, FaCloud, FaCogs } from 'react-icons/fa';
+import '../../animation/ex-style.css';
 
 const CodesCrousel = () => {
+  useEffect(() => {
+    Aos.init({ duration: 1000, once: true });
+  }, []);
   const cards = [
     {
       id: 1,
@@ -51,13 +56,10 @@ const CodesCrousel = () => {
           <div className="overflow-x-auto scrollbar-hide pb-4">
             <div className="flex gap-4 sm:gap-6 lg:gap-12 mt-8 lg:mt-12 px-4 min-w-max mx-auto">
               {cards.map((card) => (
-                <motion.div
+                <div
                   key={card.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                  className="bg-white px-6 sm:px-8 lg:px-10 py-6 sm:py-8 rounded-2xl w-[280px] sm:w-[320px] lg:w-[350px] hover:shadow-lg transition-all"
+                  data-aos="fade-up" data-aos-duration="200"
+                  className="bg-white px-6 animated-box sm:px-8 lg:px-10 py-6 sm:py-8 rounded-2xl w-[280px] sm:w-[320px] lg:w-[350px] hover:shadow-lg transition-all"
                 >
                   <div className="flex flex-col items-start">
                     <div className={`w-16 h-16 rounded-full ${card.iconBg} ${card.iconColor} flex items-center justify-center mb-4`}>
@@ -65,18 +67,17 @@ const CodesCrousel = () => {
                     </div>
                     <h3 className="text-lg sm:text-xl font-bold mb-3 text-black/75">{card.title}</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">{card.description}</p>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="mt-4 px-4 py-2 text-[#2726B6] text-sm font-medium hover:text-green-700 transition-colors flex items-center gap-2"
+                    <button
+                      data-aos="zoom-in" data-aos-duration="300"
+                      className="mt-4 px-4 py-2 hover-effect text-[#2726B6] text-sm font-medium hover:text-green-700 transition-colors flex items-center gap-2"
                     >
                       Learn More
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
-                    </motion.button>
+                    </button>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>

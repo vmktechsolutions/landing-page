@@ -1,4 +1,3 @@
-import React from 'react';
 import img1 from "../../assets/Group 233.png";
 
 const Advertisment = () => {

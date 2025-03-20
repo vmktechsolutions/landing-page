@@ -8,7 +8,7 @@ import Advertisment from "../advertisment/index";
 import WebServices from "../../components/Webservices/ServicesSection"
 // import Services2 from '../services/index';
 import Development from '../development/index';
-import Faq from '../../components/AskQuestion/Faq';
+// import Faq from '../../components/AskQuestion/Faq';
 import Testimonial from '../testimonial/index';
 import SocialBar from '../../components/socialBar/SocialBar';
 import ProcessFlow from '../../components/Process/Page';
@@ -33,7 +33,7 @@ const Home = () => {
             {/* <Testimonial /> */}
             {/* <Insights/> */}
             {/* <FreqQues/> */}
-            <Faq />
+            {/* <Faq /> */}
             {/* <MediaCoverage/> */}
         </div>
     )

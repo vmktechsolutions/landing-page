@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { FaStar, FaQuoteRight } from 'react-icons/fa';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -28,7 +27,7 @@ const testimonialData = [
   {
     id: 3,
     name: "Neeraj",
-    role: "Senior Developer",  
+    role: "Senior Developer",
     image: Img3,
     content: "Developing high-performance applications and ensuring seamless user experiences through optimized code. My expertise includes full-stack development, troubleshooting complex software issues, and improving system efficiency.",
     rating: 5
@@ -36,7 +35,7 @@ const testimonialData = [
   {
     id: 4,
     name: "Praveen Tiwari",
-    role: "Network Engineer",  
+    role: "Network Engineer",
     image: Img4,
     content: "Expertise in designing, implementing, and maintaining network infrastructures. He is experienced in troubleshooting and optimizing networks, ensuring reliable and secure connections for businesses and clients.",
     rating: 5
@@ -47,7 +46,7 @@ const testimonialData = [
 
 const Testimonial = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -68,7 +67,7 @@ const Testimonial = () => {
     <div className="relative min-h-[70vh] bg-gradient-to-b from-gray-50 to-white py-20 px-4 overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-mesh-gradient opacity-5 animate-gradient"></div>
-      
+
       {/* Floating Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-full h-full">
@@ -91,39 +90,35 @@ const Testimonial = () => {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div
+        <div
           className="text-center mb-12 md:mb-16 relative"
           data-aos="fade-down"
         >
           {/* Title Background Effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-green-300/20 via-blue-300/20 to-purple-300/20 filter blur-3xl animate-pulse-slow"></div>
-          
-          <motion.h2 
-            className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-customBodyColor via-blue-600 to-customBodyColor bg-[length:200%_auto] animate-background-pan bg-clip-text text-transparent mb-6"
-            animate={{ scale: [1, 1.02, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
+
+          <h2
+            className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-customBodyColor via-blue-600 to-customBodyColor bg-[length:200%_auto] animate-background-pan bg-clip-text text-transparent mb-6" data-aos="zoom-in"
+            data-aos-duration="2000"
+            data-aos-once="false"
+
           >
             What Our Customers Say
-          </motion.h2>
+          </h2>
           <p className="text-lg text-greyColor max-w-2xl mx-auto">
             Discover why clients trust us for their digital transformation journey
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 ">
-          <AnimatePresence mode="wait">
-            <motion.div
+            <div
               key={activeIndex}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.5 }}
-              className="lg:col-span-2"
+
+              className="lg:col-span-2" data-aos="fade-right" data-aos-duration="500"
             >
-              <motion.div
-                className="relative bg-white/90 p-12 w-full max-w-[36rem] rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100/20 lg:ml-24"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
+              <div
+                className="relative bg-white/90 p-12 w-full max-w-[36rem] rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100/20 lg:ml-24" data-aos="zoom-in" data-aos-duration="300" class="hover-effect"
+
               >
                 {/* Modern Corner Accents */}
                 <div className="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-customBodyColor/50"></div>
@@ -161,31 +156,29 @@ const Testimonial = () => {
                     <FaStar key={i} className="text-yellow-400 w-5 h-5 md:w-6 md:h-6" />
                   ))}
                 </div>
-              </motion.div>
-            </motion.div>
-          </AnimatePresence>
+              </div>
+            </div>
+       
 
           <div className="space-y-4 lg:space-y-8">
             {testimonialData.map((testimonial, index) => (
-              <motion.div
+              <div
                 key={index}
-                whileHover={{ scale: 1.02 }}
-                className={`group relative bg-white/80 p-4 rounded-xl cursor-pointer transition-all duration-300  ${
-                  index === activeIndex
-                    ? 'shadow-lg border-l-4 border-customBodyColor'
-                    : 'hover:shadow-md border-l-4 border-transparent'
-                }`}
+                className={`group relative bg-white/80 p-4 rounded-xl cursor-pointer transition-all duration-300  ${index === activeIndex
+                  ? 'shadow-lg border-l-4 border-customBodyColor'
+                  : 'hover:shadow-md border-l-4 border-transparent'
+                  }`}
                 onClick={() => setActiveIndex(index)}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-customBodyColor/0 via-customBodyColor/5 to-customBodyColor/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
-                
+
                 <div className="flex items-center space-x-4">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
                     className="w-12 h-12 rounded-full object-cover border-2 border-customBodyColor/20"
                   />
-                  
+
                   <div className="flex-grow">
                     <h4 className={`font-semibold ${index === activeIndex ? 'text-customBodyColor' : 'text-gray-700'}`}>
                       {testimonial.name}
@@ -196,7 +189,7 @@ const Testimonial = () => {
                   </div>
                   <FaQuoteRight className={`flex-shrink-0 ${index === activeIndex ? 'text-customBodyColor' : 'text-customBodyColor/20'}`} />
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

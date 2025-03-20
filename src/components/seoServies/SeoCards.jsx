@@ -1,11 +1,17 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect } from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css'
 import icon1 from '../../assets/Icons/5.png';
 import icon2 from '../../assets/Icons/6.png';
 import icon3 from '../../assets/Icons/8.png';
 import icon4 from '../../assets/Icons/9.png';
 
 const SeoCards = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000, once: true
+    })
+  }, []);
   const cardData = [
     {
       id: 1,
@@ -47,12 +53,10 @@ const SeoCards = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-9">
           {cardData.map((card) => (
-            <motion.div
+            <div
               key={card.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: card.id * 0.1 }}
-              className="bg-white border border-greenColor rounded-3xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+
+              className="bg-white border border-greenColor rounded-3xl p-6 shadow-lg hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100"
             >
               <div className="flex flex-col h-full">
                 <div className="mb-4">
@@ -76,7 +80,7 @@ const SeoCards = () => {
                   Read More
                 </motion.button> */}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

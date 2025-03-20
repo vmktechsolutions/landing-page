@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaLightbulb, FaShieldAlt, FaBullseye, FaStar } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import '../../animation/ex-style.css';
 
 const ProductFeature = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
+      once: true
+    });
+  }, []);
   const features = [
     {
       title: 'Creativity & Innovation',
@@ -32,23 +40,22 @@ const ProductFeature = () => {
       <div className="absolute inset-0 opacity-20"></div>
 
       <div className="relative w-full max-w-7xl mx-auto">
-      
+
         <div className="text-center mb-8">
-        <motion.h1
+          <h1
             className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-customBodyColor via-blue-600 to-customBodyColor bg-[length:200%_auto] animate-background-pan bg-clip-text text-transparent mb-3 pb-2"
-            animate={{ scale: [1, 1.02, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            data-aos="fade-right" data-aos-duration="1000"
           >
-          Web Development That Works for You
-          </motion.h1>
+            Web Development That Works for You
+          </h1>
           <p className="text-lg text-greyColor max-w-5xl mx-auto">
-          Scalable, secure, and high-performance web solutions designed to drive growth and deliver exceptional user experiences.          </p>
+            Scalable, secure, and high-performance web solutions designed to drive growth and deliver exceptional user experiences.          </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 place-items-center">
           {features.map((feature, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="group relative p-6 rounded-2xl border border-[#F8F8F8] transition-all duration-300 hover:scale-105 hover:shadow-2xl w-full text-center flex flex-col items-center min-h-[320px] justify-between"
             >
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

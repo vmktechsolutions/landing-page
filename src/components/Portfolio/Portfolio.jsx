@@ -4,7 +4,7 @@ import Project from "./Project";
 import ProjectCategories from "./ProjectCategories";
 import OurClient from "./OurClient";
 import ContactSection from "./ContactSection";
-import Faq from "../AskQuestion/Faq";
+// import Faq from "../AskQuestion/Faq";
 import Client from "../../pages/client";
 import ContactUs from "../../pages/contactUs";
 const Portfolio = () => {
@@ -18,7 +18,7 @@ const Portfolio = () => {
 
       {/* <ContactSection /> */}
     < ContactUs/>
-      <Faq/>
+      {/* <Faq/> */}
     </>
   );
 };

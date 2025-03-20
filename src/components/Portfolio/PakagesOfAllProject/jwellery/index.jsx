@@ -1,5 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect } from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 import { Diamond, Crown, Star, Heart, Gift, Clock, Shield, Sparkles, Code, Smartphone, Globe, Layers } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import JwelleryHero from "./JwelleryHero";
@@ -7,6 +8,11 @@ import JwellerySections from "./JwellerySections";
 import JwellerySections2 from "./JwellerySections2";
 import TechStack from '../../../WebDevelopment/techStack';
 const JewelryTechSolutions = () => {
+    useEffect(() => {
+        Aos.init({
+            duration: 1000, once: true
+        })
+    }, []);
     const heroContent = {
         title: "Innovative Jewelry Tech Solutions",
         subtitle: "Website & App Development for Jewelry Brands",
@@ -39,7 +45,7 @@ const JewelryTechSolutions = () => {
                     </motion.div>
                 </div>
             </section> */}
-            <JwelleryHero/>
+            <JwelleryHero />
 
             {/* Services Grid */}
             <section className="py-12 relative bottom-10 bg-white">
@@ -47,21 +53,21 @@ const JewelryTechSolutions = () => {
                     <h2 className="text-5xl font-bold text-center mb-10">Our Services</h2>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                         {services.map((service, index) => (
-                            <motion.div key={index} className="p-6 text-center bg-[#FDF8F4] rounded-2xl hover:shadow-xl transition-shadow" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }}>
+                            <div key={index} className="p-6 text-center bg-[#FDF8F4] rounded-2xl hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="100">
                                 <div className="w-20 h-20 mx-auto mb-4 bg-amber-800/10 rounded-full flex items-center justify-center text-amber-800">
                                     {service.icon}
                                 </div>
                                 <h3 className="font-medium mb-2">{service.name}</h3>
                                 <p className="text-gray-600 text-sm">{service.description}</p>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            <JwellerySections/>
-            <JwellerySections2/>
-            <TechStack/>
+            <JwellerySections />
+            <JwellerySections2 />
+            <TechStack />
 
             {/* CTA Section */}
             <section className="py-20 bg-amber-800 text-white">
@@ -69,9 +75,9 @@ const JewelryTechSolutions = () => {
                     <h2 className="text-3xl font-serif mb-8">Transform Your jewellery Business</h2>
                     <p className="text-lg mb-8 max-w-2xl mx-auto">Ready to elevate your brand? Let’s build your custom jewellery website or mobile app today.</p>
                     <Link to="/contact">
-                    <motion.button className="px-8 py-4 bg-white text-amber-800 rounded-full hover:bg-amber-50 transition-colors" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        Book a Consultation
-                    </motion.button>
+                        <button className="px-8 py-4 bg-white text-amber-800 rounded-full hover:bg-amber-50 transition-colors" data-aos="zoom-in">
+                            Book a Consultation
+                        </button>
                     </Link>
                 </div>
             </section>

@@ -1,6 +1,7 @@
-import React, { useState, memo } from "react";
-import { motion } from "framer-motion";
-import { FaCheck, FaArrowRight , FaStar, FaGamepad, FaShoppingCart, FaGem, FaBuilding  } from "react-icons/fa";
+import { useState, memo, } from "react";
+import Aos from "aos";
+import 'aos/dist/aos.css';
+import { FaCheck, FaArrowRight, FaStar, FaGamepad, FaShoppingCart, FaGem, FaBuilding } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import {
   FaLaptopCode,
@@ -14,10 +15,14 @@ import {
   FaClock,
   FaHeadset,
 } from "react-icons/fa";
-import icon1 from "../../assets/Icons/1.png";     
+import icon1 from "../../assets/Icons/1.png";
 import icon2 from "../../assets/Icons/2.png";
 import icon3 from "../../assets/Icons/3.png";
 import icon4 from "../../assets/Icons/4.png";
+
+// React.useEffect(() => {
+//   Aos.init({ duration: 1000, once: true });
+// }, []);
 
 const serviceData = [
   {
@@ -177,18 +182,11 @@ const serviceData = [
 const ServicesProvides = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
+  // eslint-disable-next-line react/display-name
   const ServiceCard = memo(({ service, index }) => (
-    <motion.div
+    <div
       key={index}
-      className="group relative"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{
-        duration: 0.4,
-        delay: index * 0.1,
-        ease: "easeOut",
-      }}
+      className="group relative aos-item" data-aos="fade-up" data-aos-duration="400" data-aos-delay="{index * 100}"
     >
       <div className="relative h-full bg-white rounded-2xl p-6 shadow-md   ">
         <div className="relative z-10 flex flex-col justify-between h-full">
@@ -245,7 +243,7 @@ const ServicesProvides = () => {
           </Link>
         </div>
       </div>
-    </motion.div>
+    </div>
   ));
 
   return (
@@ -276,12 +274,9 @@ const ServicesProvides = () => {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div
-          className="text-center mb-10 relative"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+        <div
+          className="text-center mb-10 relative aos-item" data-aos="fade-up" data-aos-duration="500"
+
         >
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-customBodyColor via-blue-600 to-customBodyColor bg-[length:200%_auto] animate-background-pan bg-clip-text text-transparent mb-2 pb-2">
             Our Comprehensive Services
@@ -290,7 +285,7 @@ const ServicesProvides = () => {
             Empowering your digital journey with cutting-edge solutions and
             expert support
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {serviceData.map((service, index) => (

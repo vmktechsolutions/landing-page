@@ -1,19 +1,19 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-
+import {useEffect} from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 const CyberBrain = () => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.8 }}
-    className="relative w-[500px] h-[500px] mx-auto"
+  useEffect(() => {
+    Aos.init({
+      duration:1000 , once: true
+    })
+  }, []),
+  
+  <div
+    className="relative w-[500px] h-[500px] mx-auto" data-aos="fade-up" data-aos-duration="500"
   >
     {/* Hexagonal Grid Background */}
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className="absolute inset-0"
+    <div
+      className="absolute inset-0" data-aos="fade-up" data-aos-duration="1000"
     >
       <svg className="w-full h-full" viewBox="0 0 100 100">
         <defs>
@@ -34,10 +34,10 @@ const CyberBrain = () => (
         <rect width="100" height="100" fill="url(#hexGrid)" />
         <circle cx="50" cy="50" r="45" fill="url(#cyberGlow)" />
       </svg>
-    </motion.div>
+    </div>
 
     {/* Brain Circuit Paths */}
-    <motion.div className="absolute inset-0">
+    <div className="absolute inset-0">
       <svg className="w-full h-full" viewBox="0 0 100 100">
         <defs>
           <linearGradient id="circuitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -59,141 +59,100 @@ const CyberBrain = () => (
         </defs>
 
         {/* Left Brain Hemisphere */}
-        <motion.path
+        <path
           d="M30,50 C30,35 40,25 50,25 C45,35 45,45 50,50"
           stroke="url(#circuitGradient)"
           strokeWidth="0.5"
           fill="none"
           filter="url(#circuitGlow)"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2, ease: "easeInOut" }}
+          className="path-animation"
+          data-aos="fade-in"
+          data-aos-duration="2000"
+          style={'.path-animation{stroke-dasharray: 100;  stroke-dashoffset: 100;  animation: drawPath 2s ease-in-out forwards;} @keyframes drawPath{0%{ stroke-dashoffset: 100;} 100%{stroke-dashoffset: 0;}}'}
         />
 
         {/* Right Brain Hemisphere */}
-        <motion.path
+        <path
           d="M70,50 C70,35 60,25 50,25 C55,35 55,45 50,50"
           stroke="url(#circuitGradient)"
           strokeWidth="0.5"
           fill="none"
           filter="url(#circuitGlow)"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2, ease: "easeInOut", delay: 0.5 }}
+          className="path-animation"
+          data-aos="fade-in"
+          data-aos-duration="2000"
+          style={'.path-animation{stroke-dasharray: 100;  stroke-dashoffset: 100;  animation: drawPath 2s ease-in-out forwards;} @keyframes drawPath{0%{ stroke-dashoffset: 100;} 100%{stroke-dashoffset: 0;}}'}
+
         />
 
         {/* Neural Connections */}
         {[...Array(8)].map((_, i) => (
-          <motion.circle
+          <circle
             key={i}
             cx={50 + Math.cos((i * Math.PI) / 4) * 20}
             cy={50 + Math.sin((i * Math.PI) / 4) * 20}
             r="1"
             fill="url(#circuitGradient)"
-            initial={{ scale: 0 }}
-            animate={{ scale: [0, 1, 0] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              delay: i * 0.2,
-              ease: "easeInOut",
-            }}
+            className="pulse" data-aos="zoom-in" data-aos-duration="2000"
+            style={'.pulse{ width: 50px; height: 50px; background-color: red; border-radius: 50%; animation: pulseEffect 2s ease-in-out infinite;} @keyframes pulseEffect{0%{ transform: scale(1); opacity: 1;} 50%{ transform: scale(1.5); opacity: 0.5;} 100%{ transform: scale(1); opacity: 1;}}'}
+
           />
         ))}
       </svg>
-    </motion.div>
+    </div>
 
     {/* Synaptic Pulses */}
     {[...Array(20)].map((_, i) => (
-      <motion.div
+      <div
         key={i}
-        className="absolute"
+        className="absolute pulse" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200"
         style={{
           left: `${Math.random() * 100}%`,
           top: `${Math.random() * 100}%`,
+
         }}
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{
-          scale: [0, 1, 0],
-          opacity: [0, 0.8, 0],
-        }}
-        transition={{
-          duration: 1.5 + Math.random(),
-          repeat: Infinity,
-          delay: Math.random() * 2,
-        }}
+
       >
         <div className="w-1 h-1 rounded-full bg-gradient-to-r from-[#2BDE08] to-[#AAFF01]" />
-      </motion.div>
+      </div>
     ))}
 
     {/* Energy Waves */}
     {[...Array(3)].map((_, i) => (
-      <motion.div
+      <div
         key={i}
-        className="absolute inset-0"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{
-          scale: [0.8, 1.2],
-          opacity: [0, 0.2, 0],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          delay: i * 1,
-          ease: "easeInOut",
-        }}
+        className="absolute inset-0" data-aos="zoom-out" data-aos-duration="1500" data-aos-delay="200"
       >
         <div className="w-full h-full rounded-full border border-[#2BDE08] opacity-20" />
-      </motion.div>
+      </div>
     ))}
 
     {/* Data Streams */}
     {[...Array(5)].map((_, i) => (
-      <motion.div
+      <div
         key={i}
-        className="absolute h-full w-0.5 bg-gradient-to-b from-transparent via-[#2BDE08] to-transparent"
+        className="absolute h-full w-0.5 bg-gradient-to-b from-transparent via-[#2BDE08] to-transparent" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200"
         style={{
           left: `${20 + i * 15}%`,
           opacity: 0.2,
-        }}
-        animate={{
-          opacity: [0.2, 0.4, 0.2],
-          height: ["0%", "100%", "0%"],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          delay: i * 0.4,
-          ease: "linear",
         }}
       />
     ))}
 
     {/* Circuit Nodes */}
     {[...Array(12)].map((_, i) => (
-      <motion.div
+      <div
         key={i}
-        className="absolute w-1.5 h-1.5"
+        className="absolute w-1.5 h-1.5" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200"
         style={{
           left: `${50 + Math.cos((i * Math.PI) / 6) * 35}%`,
           top: `${50 + Math.sin((i * Math.PI) / 6) * 35}%`,
         }}
-        initial={{ scale: 0 }}
-        animate={{
-          scale: [0, 1, 0],
-          opacity: [0, 1, 0],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          delay: i * 0.2,
-        }}
       >
         <div className="w-full h-full rounded-full bg-gradient-to-r from-[#2BDE08] to-[#AAFF01]" />
-      </motion.div>
+      </div>
     ))}
-  </motion.div>
+  </div>
 );
 
 export default CyberBrain;

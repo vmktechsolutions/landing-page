@@ -1,19 +1,18 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-
+import { useEffect } from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 const CyberDNA = () => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.8 }}
-    className="relative w-[500px] h-[500px] mx-auto"
+  useEffect(() => {
+    Aos.init({
+      duration: 1000, once: true
+    })
+  }, []),
+  <div
+    className="relative w-[500px] h-[500px] mx-auto" data-aos="fade-up" data-aos-duration="800"
   >
     {/* Tech Grid Background */}
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className="absolute inset-0"
+    <div
+      className="absolute inset-0" data-aos="fade-up" data-aos-duration="1000"
     >
       <svg className="w-full h-full" viewBox="0 0 100 100">
         <defs>
@@ -45,10 +44,10 @@ const CyberDNA = () => (
         </defs>
         <rect width="100" height="100" fill="url(#techGrid)" />
       </svg>
-    </motion.div>
+    </div >
 
     {/* DNA Helix */}
-    <motion.div className="absolute inset-0">
+    <div className="absolute inset-0" >
       <svg className="w-full h-full" viewBox="0 0 100 100">
         {/* DNA Strands */}
         {[...Array(20)].map((_, i) => {
@@ -57,153 +56,115 @@ const CyberDNA = () => (
           return (
             <g key={i}>
               {/* Left Strand */}
-              <motion.path
+              <path
                 d={`M30,${y} Q50,${y + 2.5} 70,${y}`}
                 stroke="url(#dnaGradient)"
                 strokeWidth="0.5"
                 fill="none"
                 filter="url(#dnaGlow)"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{
-                  duration: 2,
-                  delay: i * 0.1,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
+                className="path-animation"
+                data-aos="fade-in"
+                data-aos-duration="2000"
+                style={'.path-animation{ stroke-dasharray: 300;  stroke-dashoffset: 300; animation: drawPath 2s ease-in-out infinite alternate;} @keyframes drawPath {0%{  stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; }}'}
               />
               {/* Right Strand */}
-              <motion.path
+              <path
                 d={`M30,${y + 2.5} Q50,${y} 70,${y + 2.5}`}
                 stroke="url(#dnaGradient)"
                 strokeWidth="0.5"
                 fill="none"
                 filter="url(#dnaGlow)"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{
-                  duration: 2,
-                  delay: i * 0.1,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
+                className="path-animation"
+                data-aos="fade-in"
+                data-aos-duration="2000"
+                data-aos-delay="100"
+                style={'.path-animation{ stroke-dasharray: 300;  stroke-dashoffset: 300; animation: drawPath 2s ease-in-out infinite alternate;} @keyframes drawPath {0%{  stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; }}'}
               />
               {/* Connection Nodes */}
-              <motion.circle
+              <circle
                 cx={50 + Math.cos(phase) * 20}
                 cy={y + 1.25}
                 r="0.8"
                 fill="url(#dnaGradient)"
-                initial={{ scale: 0 }}
-                animate={{ scale: [0, 1, 0] }}
-                transition={{
-                  duration: 2,
-                  delay: i * 0.1,
-                  repeat: Infinity,
-                }}
+                filter="url(#dnaGlow)"
+                className="path-animation"
+                data-aos="fade-in"
+                data-aos-duration="2000"
+                data-aos-delay="200"
+                style={'.path-animation{ stroke-dasharray: 300;  stroke-dashoffset: 300; animation: drawPath 2s ease-in-out infinite alternate;} @keyframes drawPath {0%{  stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; }}'}
               />
             </g>
           );
         })}
       </svg>
-    </motion.div>
+    </div >
 
     {/* Data Particles */}
-    {[...Array(30)].map((_, i) => (
-      <motion.div
-        key={i}
-        className="absolute"
-        style={{
-          left: `${30 + Math.random() * 40}%`,
-          top: `${Math.random() * 100}%`,
-        }}
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{
-          scale: [0, 1, 0],
-          opacity: [0, 0.8, 0],
-          x: [0, (Math.random() - 0.5) * 20],
-          y: [0, (Math.random() - 0.5) * 20],
-        }}
-        transition={{
-          duration: 2 + Math.random(),
-          repeat: Infinity,
-          delay: Math.random() * 2,
-        }}
-      >
-        <div className="w-1 h-1 rounded-full bg-gradient-to-r from-[#2BDE08] to-[#AAFF01]" />
-      </motion.div>
-    ))}
+    {
+      [...Array(30)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute floating-box" data-aos="zoom-in" data-aos-duration="2000" data-aos-delay="500"
+          style={{
+            left: `${30 + Math.random() * 40}%`,
+            top: `${Math.random() * 100}%`,
+          }}
+
+        >
+          <div className="w-1 h-1 rounded-full bg-gradient-to-r from-[#2BDE08] to-[#AAFF01]" />
+        </div>
+      ))
+    }
 
     {/* Energy Fields */}
-    {[...Array(3)].map((_, i) => (
-      <motion.div
-        key={i}
-        className="absolute inset-0 flex items-center justify-center"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{
-          scale: [0.8, 1.2],
-          opacity: [0, 0.15, 0],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          delay: i * 1,
-          ease: "easeInOut",
-        }}
-      >
-        <div className="w-40 h-full rounded-full border border-[#2BDE08] opacity-20" />
-      </motion.div>
-    ))}
+    {
+      [...Array(3)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute inset-0 flex items-center justify-center" data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="500"
+        >
+          <div className="w-40 h-full rounded-full border border-[#2BDE08] opacity-20" />
+        </div>
+      ))
+    }
 
     {/* Data Streams */}
-    {[...Array(5)].map((_, i) => (
-      <motion.div
-        key={i}
-        className="absolute h-full w-0.5"
-        style={{
-          left: `${35 + i * 8}%`,
-          background: `linear-gradient(to bottom, 
+    {
+      [...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute h-full w-0.5" data-aos="fade-in"
+          data-aos-duration="1000"
+          style={{
+            left: `${35 + i * 8}%`,
+            background: `linear-gradient(to bottom, 
             transparent,
             ${i % 2 ? '#2BDE08' : '#AAFF01'}66,
             transparent
           )`,
-          opacity: 0.3,
-        }}
-        animate={{
-          y: ['-100%', '100%'],
-        }}
-        transition={{
-          duration: 2 + i,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      />
-    ))}
+            opacity: 0.3,
+          }}
+        />
+      ))
+    }
 
     {/* Binary Code Effect */}
-    {[...Array(20)].map((_, i) => (
-      <motion.div
-        key={i}
-        className="absolute text-xs font-mono"
-        style={{
-          left: `${75 + Math.random() * 15}%`,
-          top: `${Math.random() * 100}%`,
-          color: '#2BDE08',
-        }}
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: [0, 1, 0],
-        }}
-        transition={{
-          duration: 1.5,
-          repeat: Infinity,
-          delay: Math.random() * 2,
-        }}
-      >
-        {Math.random() > 0.5 ? '1' : '0'}
-      </motion.div>
-    ))}
-  </motion.div>
+    {
+      [...Array(20)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute text-xs font-mono" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200"
+          style={{
+            left: `${75 + Math.random() * 15}%`,
+            top: `${Math.random() * 100}%`,
+            color: '#2BDE08',
+          }}
+        >
+          {Math.random() > 0.5 ? '1' : '0'}
+        </div>
+      ))
+    }
+  </div >
 );
 
 export default CyberDNA;

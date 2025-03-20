@@ -1,10 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import banner1 from "../../../../assets/HeroSection/9a421748884a8cad2cc60dfa838e1fd2.mp4";
 import banner2 from "../../../../assets/HeroSection/9a421748884a8cad2cc60dfa838e1fd2.mp4";
 
 const GameHero = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
+      once: true,
+    })
+  }, []);
   const [isSafari, setIsSafari] = useState(false);
 
   useEffect(() => {
@@ -43,44 +50,39 @@ const GameHero = () => {
 
       {/* Curved Bottom Shape */}
       <div className="absolute bottom-0 left-0 right-0 transform translate-y-1 z-10">
-    <svg
-      viewBox="0 0 1440 320"
-      className="w-full block"
-      preserveAspectRatio="none"
-      style={{
-        filter: 'drop-shadow(0px -2px 1px rgba(250, 249, 246, 0.3))',
-        marginBottom: '-2px'
-      }}
-    >
-      <path
-        fill="#F7F8F9"
-        d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,224C960,245,1056,235,1152,208C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-      ></path>
-    </svg>
-  </div>
+        <svg
+          viewBox="0 0 1440 320"
+          className="w-full block"
+          preserveAspectRatio="none"
+          style={{
+            filter: 'drop-shadow(0px -2px 1px rgba(250, 249, 246, 0.3))',
+            marginBottom: '-2px'
+          }}
+        >
+          <path
+            fill="#F7F8F9"
+            d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,224C960,245,1056,235,1152,208C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          ></path>
+        </svg>
+      </div>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-center min-h-[calc(100vh-200px)]">
           <div className="w-full lg:w-2/3 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+            <div
+              data-aos="fade-up" data-aos-duration="800" data-aos-once="true"
             >
               <h1 className="text-5xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight text-white max-w-8xl">
-              Innovative jewellery 
-              <br/>       
-              Empowering Real Estate with Technology                   </h1>
+                Innovative jewellery
+                <br />
+                Empowering Real Estate with Technology                   </h1>
               <p className="text-xl text-white mb-8 max-w-6xl mx-auto">
-              We specialize in real estate app and website development, delivering advanced tech solutions for modern property businesses.
+                We specialize in real estate app and website development, delivering advanced tech solutions for modern property businesses.
 
               </p>
-              <motion.div
-                className="flex justify-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
+              <div
+                className="flex justify-center" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800"
               >
                 <Link
                   to="/contact"
@@ -88,27 +90,23 @@ const GameHero = () => {
                 >
                   Get Started
                 </Link>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Floating Elements */}
-            <motion.div
-              className="absolute top-1/4 left-10 bg-white/10 backdrop-blur-sm p-4 rounded-xl hidden lg:block"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
+            <div
+              className="absolute top-1/4 left-10 bg-white/10 backdrop-blur-sm p-4 rounded-xl hidden lg:block" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800"
             >
               <div className="h-2 w-16 bg-green-400 rounded-full"></div>
               <div className="h-2 w-12 bg-yellow-400 rounded-full mt-2"></div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="absolute bottom-1/4 right-10 bg-white/10 backdrop-blur-sm p-4 rounded-xl hidden lg:block"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+            <div
+              className="absolute bottom-1/4 right-10 bg-white/10 backdrop-blur-sm p-4 rounded-xl hidden lg:block" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="500"
             >
               <div className="h-2 w-12 bg-yellow-400 rounded-full"></div>
               <div className="h-2 w-16 bg-green-400 rounded-full mt-2"></div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

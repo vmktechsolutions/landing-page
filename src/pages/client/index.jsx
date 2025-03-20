@@ -1,6 +1,7 @@
-import React, { useState, memo, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { memo, } from 'react';
 import Slider from "react-slick";
+// import AOS from 'aos';
+import 'aos/dist/aos.css';
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import {
@@ -12,10 +13,15 @@ import {
   FaIndustry
 } from 'react-icons/fa';
 
+
+// useEffect(() => {
+//   Aos.init({ duration: 1000 , once: true});
+// }, []);
+
 import img1 from "../../../public/logo.png";
-import img2 from "../../assets/Bharti1.png";
-import img3 from "../../assets/chaaaruu1-removebg-preview.png";
-import img4 from "../../assets/sir.png";
+// import img2 from "../../assets/Bharti1.png";
+// import img3 from "../../assets/chaaaruu1-removebg-preview.png";
+// import img4 from "../../assets/sir.png";
 import PageTitle from '../../components/Pagetitle/PageTitle';
 
 const clientData = [
@@ -102,13 +108,10 @@ const SocialLinks = memo(({ links }) => (
 const ClientCard = memo(({ client }) => (
   <div className="bg-white/50 rounded-2xl shadow-lg border border-gray-100 p-6 transition-all duration-100 hover:shadow-xl hover:border-blue-100 relative overflow-hidden transform-gpu">
     <div className="flex flex-col items-center">
-      <motion.img
+      <img
         src={client.image}
         alt={client.name}
-        className="w-32 h-32 rounded-full border-4 border-white shadow-md mb-4 object-cover transform-gpu will-change-transform"
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.2 }}
+        className="w-32 h-32 rounded-full border-4 border-white shadow-md mb-4 object-cover transform-gpu will-change-transform" data-aos="fade-up"
         loading="lazy"
       />
 
@@ -176,12 +179,7 @@ const Client = () => {
   };
 
   return (
-    <motion.div
-      className="min-h-[60vh] bg-gradient-to-b from-gray-50 to-white py-20 px-4 relative overflow-hidden"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <div className="min-h-[60vh] bg-gradient-to-b from-gray-50 to-white py-20 px-4 relative overflow-hidden" data-aos="fade-up">
       {/* Optimized Background */}
       <div className="absolute inset-0 bg-mesh-gradient opacity-5"></div>
 
@@ -207,35 +205,28 @@ const Client = () => {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div
-          className="text-center mb-16 relative transform-gpu"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          
-            <PageTitle title="The Team Behind the Success" />
-          
+        <div
+          className="text-center mb-16 relative transform-gpu" data-aos="fade-up">
+
+          <PageTitle title="The Team Behind the Success" />
+
           <p className="text-lg text-greyColor max-w-3xl mx-auto">
             Innovating solutions and building strong partnerships.
           </p>
-        </motion.div>
+        </div>
 
         <Slider {...settings}>
           {clientData.map(client => (
-            <motion.div
+            <div
               key={client.id}
-              className="group relative px-4 transform-gpu "
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
+              className="group relative px-4 transform-gpu " data-aos="fade-up"
             >
               <ClientCard client={client} />
-            </motion.div>
+            </div>
           ))}
         </Slider>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

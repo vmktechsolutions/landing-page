@@ -1,27 +1,31 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
-import mobilePhone from '../../assets/vectorImage/Group 326.webp'; 
+import mobilePhone from '../../assets/vectorImage/Group 326.webp';
 import arrow from "../../assets/Vector.png";
 
 const OurSeoServices = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000, once: true
+    })
+  }, []);
   return (
     <div className="w-full py-8 sm:py-12 bg-[#FAF9F6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
           {/* Left Content */}
           <div className="w-full lg:w-1/2">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+            <div
+              data-aos="fade-up" data-aos-duration="600"
             >
               <h2 className="text-3xl sm:text-4xl lg:text-[2.8rem] font-bold text-[#333] leading-tight mb-6 text-center md:text-left">
                 Our SEO Services: Driving
                 <br />
                 Growth & Visibility Online
               </h2>
-              
+
               <p className="text-gray-600 text-base sm:text-md mb-10 leading-relaxed text-center md:text-left">
                 At Codes And Marketing, We Specialize In Delivering Comprehensive
                 SEO Services Tailored To Meet The Unique Needs Of Your Business. Our
@@ -33,56 +37,42 @@ const OurSeoServices = () => {
                 Stands Out In The Competitive Digital Landscape.
               </p>
 
-              <motion.div
-                className="relative w-full flex justify-center lg:justify-start"
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
+              <div
+                className="relative w-full flex justify-center lg:justify-start" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600"
               >
-                <motion.button
-                  className="relative flex items-center justify-center font-medium bg-greenColor w-64 sm:w-72 h-12 sm:h-14 rounded-full text-customBodyColor text-sm sm:text-base group overflow-hidden shadow-lg shadow-blue-500/20"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <button
+                  className="relative flex items-center justify-center font-medium bg-greenColor hover-effect w-64 sm:w-72 h-12 sm:h-14 rounded-full text-customBodyColor text-sm sm:text-base group overflow-hidden shadow-lg shadow-blue-500/20" data-aos-duration="300" data-aos="zoom-in"
+                // style={'.hover-effect{transition: transform 0.3s ease-in-out;} .hover-effect:hover{transform: scale(1.05);} .hover-effect:active{transform: scale(0.95);}'}
                 >
                   <Link
-                    to="/contact" 
+                    to="/contact"
                     className="relative z-10 transition-colors group-hover:text-customBodyColor"
                   >
                     Let's Discuss Project
                   </Link>
 
-                  <motion.img
-                    className="absolute right-7 top-2/5 transform -translate-y-1/2"
+                  <img
+                    className="absolute shake-effect right-7 top-2/5 transform -translate-y-1/2" data-aos="fade-in" data-aos-duration="800"
                     src={arrow}
                     alt="Arrow"
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
+                  // style={'@keyframes shake{0% { transform: translateX(0); }  50% { transform: translateX(5px); } 100% { transform: translateX(0); }} .shake-effect{animation: shake 1.5s ease-in-out infinite;}'}
                   />
 
                   {/* Button Gradient Animation */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-[#00A9FF]/20 to-[#A259FF]/20"
-                    animate={{
-                      x: ["-100%", "100%"],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
+                  <div
+                    className="absolute scroll-effect inset-0 bg-gradient-to-r from-[#00A9FF]/20 to-[#A259FF]/20" data-aos="fade-in" data-aos-duration="800"
+                  // style={'@keyframes horizontal-scroll{ 0% { transform: translateX(-100%); }  100% { transform: translateX(100%); }} .scroll-effect{animation: horizontal-scroll 3s linear infinite; display: inline-block; whitespace: nowrap;}'}
                   />
-                </motion.button>
-              </motion.div>
-            </motion.div>
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Right Content - Phone Display */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-end -mt-16">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="relative w-[280px] sm:w-[320px] lg:w-[40rem]"
+            <div
+
+              className="relative w-[280px] sm:w-[320px] lg:w-[40rem]" data-aos="zoom-in" data-aos-duration="600"
             >
               <div className="relative">
                 <img
@@ -91,7 +81,7 @@ const OurSeoServices = () => {
                   className="w-full h-auto"
                 />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

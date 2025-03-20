@@ -1,8 +1,15 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
+
 
 const GolGol = () => {
-  const [rotations, setRotations] = useState([0, 0, 0]); // Tracks rotation of each circle
+  useEffect(() => {
+    Aos.init({
+      duration: 1000, once: true
+    });
+  }, []);
+  const [setRotations] = useState([0, 0, 0]); // Tracks rotation of each circle
   const [activeSpinner, setActiveSpinner] = useState(null);
 
   const circleIcons = [
@@ -26,10 +33,8 @@ const GolGol = () => {
   };
 
   const Circle = ({ icons, index }) => (
-    <motion.div
-      className="relative w-72 h-72 rounded-full border-4 border-greenColor flex items-center justify-center"
-      animate={{ rotate: rotations[index] }}
-      transition={{ duration: 1.5, ease: "easeInOut" }}
+    <div
+      className="relative w-72 h-72 rotate-box rounded-full border-4 border-greenColor flex items-center justify-center" data-aos="fade-in" data-aos-duration="1500"
     >
       {icons.map((icon, i) => (
         <div
@@ -50,7 +55,7 @@ const GolGol = () => {
           />
         </div>
       ))}
-    </motion.div>
+    </div>
   );
 
   return (
@@ -71,33 +76,17 @@ const GolGol = () => {
               <div onClick={() => handleSpin(index)} className="cursor-pointer">
                 <Circle icons={icons} index={index} />
               </div>
-              <motion.div
-  className="absolute bottom-[7.5rem] left-[7.5rem] transform -translate-x-1/2 -translate-y-1/2
+              <div
+                className="absolute bottom-[7.5rem] left-[7.5rem] transform -translate-x-1/2 -translate-y-1/2
              w-16 h-16 rounded-full bg-[#FFE365] border-2 border-greenColor text-customBodyColor 
              flex items-center justify-center 
-             text-sm font-medium z-10 pointer-events-none"
-
-                animate={{
-                  scale: activeSpinner === index ? [1, 0.95, 1] : [1, 1.05, 1],
-                  boxShadow: activeSpinner === index
-                    ? [
-                        "0 0 0 0 rgba(255,227,101,0)",
-                        "0 0 20px 10px rgba(255,227,101,0.5)",
-                        "0 0 0 0 rgba(255,227,101,0)",
-                      ]
-                    : "0 0 10px 5px rgba(255,227,101,0.3)",
-                }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+             text-sm font-medium z-10 pointer-events-none glowing-box" data-aos="zoom-in" data-aos-duration="2000"
               >
-                <motion.span className="font-bold text-9xl text-white"
-                  animate={{
-                    scale: activeSpinner === index ? [1, 1.1, 1] : 1,
-                  }}
-                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                <span className="font-bold text-9xl text-white scale-effect" data-aos="zoom-in" data-aos-duration="1500"
                 >
-               ❂
-                </motion.span>
-              </motion.div>
+                  ❂
+                </span>
+              </div>
             </div>
           ))}
         </div>

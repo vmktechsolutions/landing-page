@@ -1,10 +1,15 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect } from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
-import seoSuccessImage from '../../assets/HeroSection/Vidico __ Agency - Video & Animation in Melbourne, Australia.gif'; 
+import seoSuccessImage from '../../assets/HeroSection/Vidico __ Agency - Video & Animation in Melbourne, Australia.gif';
 import arrow from "../../assets/Vector.png";
+import '../../animation/ex-style.css';
 
 const SeoSuccess = () => {
+  useEffect(() => {
+    Aos.init({ duration: 1000, once: true });
+  }, []);
   const successPoints = [
     "More Qualified Leads & Conversions",
     "Stronger Brand Credibility & Trust",
@@ -24,76 +29,57 @@ const SeoSuccess = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           {/* Left Side - Illustration */}
           <div className="w-full lg:w-1/2">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+            <div
+              data-aos="fade-left" data-aos-duration="600"
             >
+
               <img
                 src={seoSuccessImage}
                 alt="SEO Success Illustration"
                 className="w-full h-auto"
               />
-            </motion.div>
+            </div>
           </div>
 
           {/* Right Side - Success Points */}
           <div className="w-full lg:w-1/2">
             <div className="space-y-5">
               {successPoints.map((point, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{scale : 1.05}}
-                  transition={{ duration: 0.2, delay: index * 0.0 }}
+                  data-aos="fade-up" data-aos-duration="200" data-aos-delay="0"
                 >
                   <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#D9D9D9]">
                     <p className="text-black/75 font-bold text-md">{point}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
-              
-              <motion.div
-                className="relative w-full flex justify-center lg:justify-start"
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
+
+              <div
+                className="relative w-full flex justify-center lg:justify-start" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600"
               >
-                <motion.button
-                  className="relative flex items-center justify-center font-medium bg-custom-gradient w-64 sm:w-52 h-12 sm:h-14 rounded-full text-customBodyColor text-sm sm:text-base group overflow-hidden shadow-lg shadow-blue-500/20"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <button
+                  className="relative flex items-center justify-center font-medium bg-custom-gradient w-64 sm:w-52 h-12 sm:h-14 rounded-full text-customBodyColor text-sm hover-effect sm:text-base group overflow-hidden shadow-lg shadow-blue-500/20" data-aos="zoom-in" data-aos-duration="300"
                 >
                   <Link
-                    to="/contact" 
+                    to="/contact"
                     className="relative z-10 transition-colors group-hover:text-customBodyColor"
                   >
                     Connect Now
                   </Link>
 
-                  <motion.img
-                    className="absolute right-6 top-2/5 transform -translate-y-1/2"
+                  <img
+                    className="absolute wiggle-effect right-6 top-2/5 transform -translate-y-1/2" data-aos="fade-in" data-aos-duration="1000"
                     src={arrow}
                     alt="Arrow"
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
                   />
 
                   {/* Button Gradient Animation */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20"
-                    animate={{
-                      x: ["-100%", "100%"],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
+                  <div
+                    className="absolute inset-0 bg-gradient-to-r marquee-text from-blue-400/20 to-purple-400/20" data-aos="fade-in" data-aos-duration="1000"
                   />
-                </motion.button>
-              </motion.div>
+                </button>
+              </div>
             </div>
           </div>
         </div>

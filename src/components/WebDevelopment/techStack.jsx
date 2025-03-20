@@ -1,5 +1,7 @@
-import { motion } from "framer-motion";
-import React from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import '../../animation/ex-style.css';
+import React, { useEffect } from "react";
 import react from "../../assets/Icons/react 1.png";
 import swiftIcon from "../../assets/Icons/icons8-next.js-128.svg";
 import Angular from "../../assets/Icons/angular.svg";
@@ -15,6 +17,9 @@ import Sql from "../../assets/Icons/mysql.svg";
 import FaPython from "../../assets/Icons/icons8-python.svg"
 
 const TechStack = () => {
+  useEffect(() => {
+    Aos.init({ duration: 1000, once: true });
+  }, []);
   const technologies = [
     {
       name: "React.js",
@@ -95,36 +100,32 @@ const TechStack = () => {
     {
       name: "Python",
       icon: FaPython,
-description: "A powerful, easy-to-learn language for web development, data science, and automation.",
+      description: "A powerful, easy-to-learn language for web development, data science, and automation.",
       delay: 1.6,
-    },    
+    },
   ];
 
   return (
     <div className="bg-gradient-to-b from-blue-50 to-white py-10">
       <div className="max-w-6xl mx-auto px-2">
-        <motion.div
+        <div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-out"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#2A3DD8] mb-4">
-          Innovative & Scalable Web Solutions
+            Innovative & Scalable Web Solutions
           </h2>
           <p className="text-gray-600 text-lg">
             Technologies We Use to Build Future-Ready Websites
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 px-auto ">
           {technologies.map((tech, index) => (
-            <motion.div
+            <div
               key={index}
               className="bg-white rounded-2xl py-10 px-8 shadow-lg hover:shadow-xl transition-all duration-300 "
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: tech.delay }}
+              data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-delay={tech.delay * 100}
             >
               <div className="flex flex-col items-center text-center">
                 <div className="w-24 h-24 mb-6">
@@ -141,7 +142,7 @@ description: "A powerful, easy-to-learn language for web development, data scien
                   {tech.description}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

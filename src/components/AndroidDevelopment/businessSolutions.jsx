@@ -1,13 +1,14 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
-import { 
-  FaMobileAlt, 
-  FaPaintBrush, 
-  FaTools, 
-  FaRocket, 
+import Aos from "aos";
+import "aos/dist/aos.css";
+import {
+  FaMobileAlt,
+  FaPaintBrush,
+  FaTools,
+  FaRocket,
   FaShieldAlt,
-  FaAndroid 
+  FaAndroid
 } from "react-icons/fa";
 
 const BusinessSolutions = () => {
@@ -54,26 +55,22 @@ const BusinessSolutions = () => {
     <div className="relative py-10 bg-[#F4FBF4] min-h-[600px] overflow-hidden">
       <div className="max-w-6xl mx-auto relative px-4">
         <div className="text-center mb-16">
-          <motion.h1
-            className="text-4xl md:text-5xl font-bold mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          <h1
+            className="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-up" data-aos-duration="600"
+
           >
             <span className="text-[#2563EB]">
               Custom Mobile App Solutions To Power Your Business Forward
             </span>
-          </motion.h1>
+          </h1>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-5xl mx-auto">
           {solutions.map((solution, index) => (
-            <motion.div
+            <div
               key={index}
-              className="backdrop-blur-sm bg-white/30 rounded-[20px] py-8 px-6 shadow-lg hover:shadow-md hover:scale-105 relative group min-h-[280px] flex flex-col items-center text-center border border-white/40 max-w-[300px] mx-auto w-full transition-transform duration-300 hover:scale-105"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="backdrop-blur-sm bg-white/30 rounded-[20px] py-8 px-6 shadow-lg hover:shadow-md hover:scale-105 relative group min-h-[280px] flex flex-col items-center text-center border border-white/40 max-w-[300px] mx-auto w-full transition-transform duration-300 hover:scale-105" data-aos="fade-up" data-aos-duration="600" data-aos-delay="{index * 100}"
+
             >
               <div className="absolute drop-shadow-[0px_4px_10px_#7AF304] top-0 w-20 h-0.5 bg-[#7AF304] rounded-full"></div>
 
@@ -93,7 +90,7 @@ const BusinessSolutions = () => {
                   <FiArrowRight className="w-5 h-5" />
                 </button> */}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

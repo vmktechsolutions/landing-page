@@ -1,4 +1,6 @@
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import expriecce from "../../assets/Icons/clock.png";
@@ -17,6 +19,9 @@ const StatItem = ({ img, number, label }) => {
 
   React.useEffect(() => {
     if (isInView) {
+      Aos.init({
+        duration: 1000, once: true
+      })
       const target = parseInt(number);
       let start = 0;
       const duration = 2000; // 2 seconds
@@ -37,12 +42,9 @@ const StatItem = ({ img, number, label }) => {
   }, [isInView, number]);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      className="text-center"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      className="text-center" data-aos="fade-up" data-aos-duration="600"
     >
       <div className="w-20 h-20 mx-auto mb-4 bg-white shadow-[1px_2px_10px_1px_rgba(155,236,0,1)] rounded-2xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
         <img
@@ -55,7 +57,7 @@ const StatItem = ({ img, number, label }) => {
         {count}+
       </h3>
       <p className="text-gray-600">{label}</p>
-    </motion.div>
+    </div>
   );
 };
 
@@ -108,27 +110,20 @@ const AboutUs = () => {
     <div className="min-h-screen bg-gradient-to-b from-white to-[#F4FBF4]">
       {/* Hero Section */}
       <div className="relative overflow-hidden py-20 bg-gradient-to-r from-[#2563EB]/10 to-[#7AF304]/10 lg:mt-12">
-        <motion.div
-          className="max-w-6xl mx-auto px-4 text-center relative z-10"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+        <div
+          className="max-w-6xl mx-auto px-4 text-center relative z-10" data-aos="fade-up" data-aos-duration="800"
         >
-          <motion.h1
-            className="text-5xl md:text-6xl font-bold mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          <h1
+            className="text-5xl md:text-6xl font-bold mb-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200"
+
           >
             <span className="bg-gradient-to-r from-black to-black bg-clip-text text-transparent text-4xl md:text-6xl mb-10">
               Welcome to CodesAndMarketing
             </span>
-          </motion.h1>
-          <motion.p
-            className="text-sm md:text-xl text-center md:text-left text-gray-600 max-w-10xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+          </h1>
+          <p
+            className="text-sm md:text-xl text-center md:text-left text-gray-600 max-w-10xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400"
+
           >
             CodesAndMarketing – where innovation meets strategy. We are a
             forward-thinking digital solutions agency that specializes in
@@ -153,8 +148,8 @@ const AboutUs = () => {
             audience, convert leads into customers, and maximize your online
             presence. With a proven track record of success and a focus on
             delivering value, we're here to make your digital goals a reality.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         {/* Decorative Elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -182,14 +177,12 @@ const AboutUs = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <motion.div
+              <div
                 key={index}
-                className="group relative bg-white p-6 rounded-2xl shadow-xl hover:shadow-xl transition-all duration-300"
+                className="group relative bg-white p-6 rounded-2xl shadow-xl hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-duration="600" data-aos-delay="{index * 100}"
                 onMouseEnter={() => setHoveredValue(index)}
                 onMouseLeave={() => setHoveredValue(null)}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+
               >
                 <div className="w-20 h-20 bg-white shadow-[1px_2px_10px_1px_rgba(155,236,0,1)] rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:rotate-2 transition-transform duration-300">
                   <img
@@ -203,39 +196,32 @@ const AboutUs = () => {
                 </h3>
                 <AnimatePresence mode="wait">
                   {hoveredValue === index ? (
-                    <motion.p
-                      key="details"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="text-gray-600 text-center"
+                    <p
+                      key={index}
+                      className="text-gray-600 text-center" data-aos="fade" data-aos-duration="600"
                     >
                       {value.details}
-                    </motion.p>
+                    </p>
                   ) : (
-                    <motion.p
-                      key="description"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="text-gray-600 text-center"
+                    <p
+                      key={index}
+
+                      className="text-gray-600 text-center" data-aos="fade" data-aos-duration="600"
                     >
                       {value.description}
-                    </motion.p>
+                    </p>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </div>
 
       {/* Mission Statement */}
-      <motion.div
-        className="py-16 bg-gradient-to-r from-[#2563EB]/5 to-[#7AF304]/5"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+      <div
+        className="py-16 bg-gradient-to-r from-[#2563EB]/5 to-[#7AF304]/5" data-aos="fade-in" data-aos-duration="800"
+
       >
         <div className="max-w-6xl mx-auto px-4">
           <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl">
@@ -250,39 +236,31 @@ const AboutUs = () => {
             </p>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* CTA Section */}
       <div className="py-16 bg-gradient-to-r from-[#2563EB]/10 to-[#7AF304]/10">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <motion.h2
-            className="text-3xl md:text-4xl font-bold mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          <h2
+            className="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up" data-aos-duration="600"
+
           >
             Ready to Transform Your Digital Presence?
-          </motion.h2>
-          <motion.p
-            className="text-xl text-gray-600 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          </h2>
+          <p
+            className="text-xl text-gray-600 mb-8" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200"
+
           >
             Let's collaborate to bring your vision to life with our expertise in
             technology and marketing.
-          </motion.p>
+          </p>
           <Link to="/contact">
-            <motion.button
-              className="bg-custom-gradient text-customBodyColor px-8 py-4 rounded-full text-sm font-medium hover:shadow-lg transition-shadow duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <button
+              className="bg-custom-gradient text-customBodyColor px-8 py-4 rounded-full text-sm font-medium hover:shadow-lg transition-shadow duration-300 aos-item hover-effect" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400"
+
             >
               Get Started Today
-            </motion.button>
+            </button>
           </Link>
         </div>
       </div>

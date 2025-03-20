@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion';
-import React from 'react';
+
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 import flutterIcon from '../../assets/Icons/icons8-flutter-128.png';
 import swiftIcon from '../../assets/Icons/swift.svg';
 import kotlinIcon from '../../assets/Icons/icons8-kotlin-128.png';
@@ -10,6 +12,9 @@ import xamarinIcon from "../../assets/Icons/icons8-xamarin-128.png";
 import angularIcon from "../../assets/Icons/angular.svg";
 import titaniumIcon from "../../assets/Icons/image-removebg-preview (7).png";
 const TechStack = () => {
+  useEffect(() => {
+    Aos.init({ duration: 1000, once: true });
+  })
   const technologies = [
     {
       name: 'React Native',
@@ -83,11 +88,9 @@ const TechStack = () => {
   return (
     <div className="bg-gradient-to-b from-pink-50 to-white py-10">
       <div className="max-w-6xl mx-auto px-2">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <div
+          className="text-center mb-16" data-aos="fade-up" data-aos-duration="600"
+       
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#2A3DD8] mb-2">
             Technology Stacks
@@ -95,16 +98,13 @@ const TechStack = () => {
           <p className="text-gray-600 text-lg">
             We Use To Develop High Performance Mobile Apps
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-10">
           {technologies.map((tech, index) => (
-            <motion.div
+            <div
               key={index}
-              className="bg-white rounded-2xl py-10 px-8 shadow-lg hover:shadow-xl transition-all duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: tech.delay }}
+              className="bg-white rounded-2xl py-10 px-8 shadow-lg hover:shadow-xl transition-all duration-300"  data-aos="fade-up" data-aos-duration="500" data-aos-delay={tech.delay * 100}
             >
               <div className="flex flex-col items-center text-center">
                 <div className="w-24 h-24 mb-6">
@@ -121,7 +121,7 @@ const TechStack = () => {
                   {tech.description}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { motion } from "framer-motion";
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 import { useEffect, useState } from "react";
 
 const Languages = () => {
@@ -12,30 +13,32 @@ const Languages = () => {
   ];
   const Counter = ({ target }) => {
     const [count, setCount] = useState(0);
-  
+
     useEffect(() => {
+      Aos.init({
+        duration: 1000, once: true
+      })
       let start = 0;
       const duration = 1000; // 1 second animation
       const intervalTime = duration / target;
-  
+
       const interval = setInterval(() => {
         start += 1;
         setCount(start);
         if (start === target) clearInterval(interval);
       }, intervalTime);
-  
+
       return () => clearInterval(interval);
     }, [target]);
-  
+
     return (
-      <motion.h2
-        className="text-6xl font-extrabold text-slate-900"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+      <h2
+        className="text-6xl font-extrabold text-slate-900" data-aos="fade-in"
+        data-aos-duration="500"
+
       >
         {count}+
-      </motion.h2>
+      </h2>
     );
   };
 
@@ -47,7 +50,7 @@ const Languages = () => {
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4 text-center">
             {stats?.map((item) => (
-              <div key={item.id}  className="p-4 sm:w-1/4 w-1/2">
+              <div key={item.id} className="p-4 sm:w-1/4 w-1/2">
                 <Counter target={item.value} />
                 <p className="leading-relaxed text-slate-700 font-semibold">{item.label}</p>
               </div>

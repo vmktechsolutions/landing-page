@@ -23,6 +23,8 @@ import EcommerceLanding from "./components/Portfolio/PakagesOfAllProject/Ecommer
 import JewelryLanding from "./components/Portfolio/PakagesOfAllProject/jwellery";
 import Astrology from "./components/Portfolio/PakagesOfAllProject/Astrology";
 import RealEstate from "./components/Portfolio/PakagesOfAllProject/RealEstate";
+import AOS from "aos";
+import "aos/dist/aos.css";
 function App() {
   return (
     <BrowserRouter>
@@ -33,6 +35,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/terms" element={<TermsConditions />} />
         <Route path="/aboutUs" element={<AboutUs />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/cookies" element={<CookiesPolicy />} />
         <Route path="/app-Development" element={<AppDevelopement />} />
@@ -50,11 +53,12 @@ function App() {
         <Route path="/JewelryLanding" element={<JewelryLanding />} />
         <Route path="/Astrology" element={<Astrology />} />
         <Route path="/RealEstate" element={<RealEstate />} />
- 
+
       </Routes>
       <Footer />
     </BrowserRouter>
   );
 }
 
+AOS.init();
 export default App;

@@ -1,32 +1,30 @@
-import React from 'react';
-import { motion, useInView, useAnimation, animate } from 'framer-motion';
+import React, { useEffect } from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 import { FaUsers, FaRegThumbsUp } from 'react-icons/fa';
 import { BsCalendar2Check } from 'react-icons/bs';
 import { MdOutlineBusinessCenter } from 'react-icons/md';
+import { use } from 'react';
 
 const ServiceTag = ({ text }) => (
-  <div className="inline-flex items-center px-4 sm:px-6 lg:px-10 py-2 sm:py-3 min-w-[140px] sm:min-w-[180px] justify-center bg-white border-2 border-greenColor rounded-full text-sm sm:text-md text-customBodyColor hover:text-white mr-2 mb-2 hover:bg-greenColor hover:shaow-lg ease-in duration-300 transition-colors">
+
+  useEffect(() => {
+    Aos.init({
+      duration: 1000, once: true
+    })
+  }, []),
+
+
+  < div className="inline-flex items-center px-4 sm:px-6 lg:px-10 py-2 sm:py-3 min-w-[140px] sm:min-w-[180px] justify-center bg-white border-2 border-greenColor rounded-full text-sm sm:text-md text-customBodyColor hover:text-white mr-2 mb-2 hover:bg-greenColor hover:shaow-lg ease-in duration-300 transition-colors" >
     {text}
-  </div>
+  </div >
 );
 
 const StatCard = ({ icon: Icon, number, text }) => {
   const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const [displayNumber, setDisplayNumber] = React.useState(0);
+  const [displayNumber, ] = React.useState(0);
 
-  React.useEffect(() => {
-    if (isInView) {
-      const num = parseInt(number);
-      const controls = animate(0, num, {
-        duration: 1,
-        onUpdate: (value) => setDisplayNumber(Math.floor(value)),
-        ease: 'easeOut',
-      });
-
-      return () => controls.stop();
-    }
-  }, [isInView, number]);
+  
 
   return (
     <div ref={ref} className="flex items-center h-auto min-h-[100px] xs:min-h-[120px] sm:min-h-[150px] lg:min-h-[180px] gap-2 xs:gap-3 sm:gap-4 lg:gap-6 bg-white border border-greenColor py-3 xs:py-4 sm:py-6 lg:py-8 px-2 xs:px-3 sm:px-4 lg:px-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow">
@@ -93,13 +91,11 @@ const DigitalServices = () => {
           <div className="w-full md:w-1/2">
             <div className="grid grid-cols-2 gap-2 xs:gap-3 sm:gap-4 lg:gap-6">
               {digitalServicesData.stats.map((stat, index) => (
-                <motion.div
+                <div
                   key={index}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
                 >
                   <StatCard {...stat} />
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>

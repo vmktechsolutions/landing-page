@@ -1,23 +1,29 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ShoppingCart, BarChart3, Truck, CreditCard, Globe2, Users, Box, 
-         Headphones, ChevronRight, Shield, Zap, ArrowRight, Settings, 
-         Smartphone, Repeat, Star, Clock, Cloud } from 'lucide-react';
-         import ContactUs from '../../../../pages/contactUs';
+import { useEffect } from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import {
+  ShoppingCart, BarChart3, Truck, CreditCard, Globe2, Users, Box,
+  Headphones, ChevronRight, Shield, Zap, ArrowRight, Settings,
+  Smartphone, Repeat, Star, Clock, Cloud
+} from 'lucide-react';
+import ContactUs from '../../../../pages/contactUs';
 import { Link } from 'react-router-dom';
 
 // HeroSection Component
 const HeroSection = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000, once: true
+    })
+  }, []);
   return (
     <section className="relative bg-gradient-to-r from-violet-600 via-indigo-700 to-blue-800 text-white overflow-hidden">
       <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] opacity-10"></div>
       <div className="absolute inset-0 bg-grid-white/10"></div>
       <div className="max-w-7xl mx-auto px-4 py-32">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          <div
+            data-aos="fade-up" data-aos-duration="600"
           >
             <h1 className="text-6xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
               Future of E-commerce Is Here
@@ -26,22 +32,20 @@ const HeroSection = () => {
               Experience next-generation e-commerce with AI-powered insights, blockchain security, and seamless omnichannel integration.
             </p>
             <div className="flex gap-4">
-            <Link to="/contact">
-              <button className="px-8 py-4 bg-white text-indigo-600 rounded-full font-bold hover:bg-blue-50 transition-all transform hover:scale-105">
-                Launch Store
-              </button>
+              <Link to="/contact">
+                <button className="px-8 py-4 bg-white text-indigo-600 rounded-full font-bold hover:bg-blue-50 transition-all transform hover:scale-105">
+                  Launch Store
+                </button>
               </Link>
               <Link to="/contact">
-              <button className="px-8 py-4 border-2 border-white rounded-full font-bold hover:bg-white/10 transition-all">
-                Watch Demo
-              </button>
+                <button className="px-8 py-4 border-2 border-white rounded-full font-bold hover:bg-white/10 transition-all">
+                  Watch Demo
+                </button>
               </Link>
             </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="relative"
+          </div>
+          <div
+            className="relative" data-aos="zoom-in" data-aos-duration="600"
           >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-blue-500/20 blur-3xl"></div>
@@ -58,7 +62,7 @@ const HeroSection = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
@@ -93,29 +97,24 @@ const FeaturesGrid = () => {
   return (
     <section className="py-24 bg-black">
       <div className="max-w-7xl mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+        <div
+          className="text-center mb-16" data-aos="fade-up" data-aos-duration="600"
         >
           <h2 className="text-4xl font-bold mb-4 text-white">Future-Ready Features</h2>
           <p className="text-xl text-gray-400">Powered by cutting-edge technology</p>
-        </motion.div>
+        </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="p-6 bg-gray-900 rounded-2xl border border-gray-800 hover:border-indigo-500 transition-all group"
+              className="p-6 bg-gray-900 rounded-2xl border border-gray-800 hover:border-indigo-500 transition-all group" data-aos="fade-up" data-aos-duration="600" data-aos-delay="{index * 100}"
             >
               <div className="w-12 h-12 bg-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400 mb-4 group-hover:scale-110 transition-transform">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-bold mb-2 text-white">{feature.title}</h3>
               <p className="text-gray-400">{feature.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -137,17 +136,14 @@ const StatsDisplay = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 }}
-              className="text-center p-6 bg-gray-800/50 rounded-2xl border border-gray-700"
+              className="text-center p-6 bg-gray-800/50 rounded-2xl border border-gray-700" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="{index * 100}"
             >
               <div className="flex justify-center mb-4 text-indigo-400">{stat.icon}</div>
               <div className="text-4xl font-bold text-white mb-2">{stat.value}</div>
               <div className="text-gray-400">{stat.label}</div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -181,12 +177,9 @@ const TestimonialSlider = () => {
         </div>
         <div className="grid md:grid-cols-2 gap-8">
           {testimonials.map((testimonial, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="p-8 bg-gray-900 rounded-2xl border border-gray-800"
+              className="p-8 bg-gray-900 rounded-2xl border border-gray-800" data-aos="fade-left" data-aos-duration="600" data-aos-delay="{index * 100}"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 bg-indigo-500/20 rounded-full flex items-center justify-center">
@@ -198,7 +191,7 @@ const TestimonialSlider = () => {
                 </div>
               </div>
               <p className="text-gray-300">{testimonial.content}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -222,10 +215,9 @@ const CTASection = () => {
               <ArrowRight className="w-5 h-5" />
             </button>
           </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="bg-white/10 backdrop-blur-xl p-8 rounded-2xl border border-white/20"
+          <div
+
+            className="bg-white/10 backdrop-blur-xl p-8 rounded-2xl border border-white/20" data-aos="zoom-in" data-aos-duration="600"
           >
             <form className="space-y-4">
               <input
@@ -237,7 +229,7 @@ const CTASection = () => {
                 Start Free Trial
               </button>
             </form>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
@@ -253,7 +245,7 @@ const EcommerceLanding = () => {
       <StatsDisplay />
       <TestimonialSlider />
       {/* <CTASection /> */}
-      <ContactUs/>
+      <ContactUs />
     </div>
   );
 };
